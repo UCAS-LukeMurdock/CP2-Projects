@@ -1,6 +1,10 @@
 # Luke Murdock, Financial Calculator
 
-print("hi")
 def main():
-    user_choice = int(input(""))
+    choice = int(input("Compoud Interest() Goal End()"))
     pass
+
+
+
+
+main()
