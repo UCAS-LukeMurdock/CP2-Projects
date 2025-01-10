@@ -77,12 +77,12 @@ def comp(): # Calculates how much money you will get
         break
     i = 1
     while i <= time:
-        money = money*interest+money
+        money = money*interest + money
         i += 1
     print(f"\nMoney Gained: ${round(money-start_money, 2):,.2f} | Final Money: ${round(money, 2):,.2f}")
     main()
 
-def goal(): #Tells the user how long it will take to complete their savings goal
+def goal(): # Tells the user how long it will take to complete their savings goal
     while True:
         try:
             occur = int(input("How often are you depositing? Weekly(1) Monthly(2)\n"))
