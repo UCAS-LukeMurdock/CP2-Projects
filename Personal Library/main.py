@@ -1,6 +1,6 @@
 # Luke Murdock, Personal Library
 
-books = {"Fablehaven", "Dragonwatch", "Five Kingdoms", "Beyonders", "Michael Vey", "Percy Jackson", "39 Clues", "Leven Thumps", "Pillage", "Wings of Fire", "Lord of the Rings", "The Hobbit"}
+books = {("Fablehaven", "Brandon Mull"), ("Dragonwatch", "Brandon Mull"), ("Five Kingdoms", "Brandon Mull"), ("Beyonders", "Brandon Mull"), ("Michael Vey", "Richard Paul Evans"), ("Percy Jackson", "Rick Riordan"), ("39 Clues", "Rick Riordan"), ("Leven Thumps", "Obert Skye"), ("Pillage", "Obert Skye"), ("Wings of Fire", "Tui T. Sutherland"), ("Lord of the Rings", "J.R.R. Tolkien"), ("The Hobbit", "J.R.R. Tolkien")}
 
 def main(): # This funcion prints the list and lets the user choose what they want to do with the list.
     while True:
@@ -25,26 +25,45 @@ def main(): # This funcion prints the list and lets the user choose what they wa
             continue
 
 def search(): #
-
+    while True:
+        try:
+            book_title = str(input("Title of The Book You Want Added: ")).title()
+        except:
+            print("Incorrect Input")
+            continue
+        break
 
 def add(): #
     while True:
         try:
-            add_book = str(input("Book You Want Added: ")).title()
+            book_title = str(input("Title of The Book You Want Added: ")).title()
+            book_author = str(input("Author of The Book You Want Added: ")).title()
         except:
             print("Incorrect Input")
-            #Problem
-        if add_book not in books:
-            print("Not in")
             continue
-        else:
-            break
+        break
 
-    books.append(add_book)
+    add_book = (book_title, book_author)
+    books.add(add_book)
+
 def remove(): #
-    try:
-        remove_book = str(input("Book You Want Added: ")).title()
-    except:
-        print("Incorrect Input")
-    books.remove(remove_book)
+    while True:
+        book_found = 0
+        try:
+            book_title = str(input("Title of Book You Want Removed: ")).title()
+        except:
+            print("Incorrect Input")
+            continue
+        for book in books:
+            if book_title in book[0]:
+                book_found = 1
+        if book_found == 0:
+            print("Book Not In Library")
+            continue
+        elif book_found == 1:
+            books.remove(book)
+            break
+            
+        
 
+main()
