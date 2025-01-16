@@ -36,8 +36,8 @@ def search(): #
 def add(): #
     while True:
         try:
-            book_title = str(input("Title of The Book You Want Added: ")).title()
-            book_author = str(input("Author of The Book You Want Added: ")).title()
+            book_title = str(input("Title of The Book You Want Added: "))
+            book_author = str(input("Author of The Book You Want Added: "))
         except:
             print("Incorrect Input")
             continue
@@ -55,15 +55,14 @@ def remove(): #
             print("Incorrect Input")
             continue
         for book in books:
-            if book_title in book[0]:
+            if book_title == book[0].title():
+                found_book = book
                 book_found = 1
         if book_found == 0:
             print("Book Not In Library")
             continue
         elif book_found == 1:
-            books.remove(book)
+            books.remove(found_book)
             break
-            
-        
 
 main()
