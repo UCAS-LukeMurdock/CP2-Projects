@@ -14,12 +14,13 @@ def any_input(prompt, data_type): # Checks and solves errors in int and float in
             continue
         return response
 
-def main(): # Lets the user leave or use the functions to create a list and password with the wanted characters.
+def main(): # Lets the user leave or use the functions to create a list and passwords with the wanted characters.
     print("Welcome to this generator that creates random passwords based on your requirements.")
     while True:
         chars = []
         choice = any_input("Stay(1) Exit(2)\n", "int")
         if choice == 2:
+            print("Come back soon!")
             break
         try:
             chars.extend(uppercase())
@@ -37,8 +38,13 @@ def main(): # Lets the user leave or use the functions to create a list and pass
             chars.extend(special())
         except:
             pass
-        word = arrange(chars)
-        print(f"Password: {word}")
+        length = any_input("Length: ", "int")
+        if chars == []:
+            print("No Characters Selected For Password")
+            continue
+        for word_num in range(1,5):
+            word = arrange(chars, length)
+            print(f"Password {word_num}: {word}")
 
 def uppercase(): # Returns the uppercase letters if wanted
     upper = any_input("Uppercase Letters(1) No(2):\n", "int")
@@ -48,28 +54,27 @@ def uppercase(): # Returns the uppercase letters if wanted
         return
 
 def lowercase(): # Returns the lowercase letters if wanted
-    upper = any_input("Lowercase Letters(1) No(2):\n", "int")
-    if upper == 1:
+    lower = any_input("Lowercase Letters(1) No(2):\n", "int")
+    if lower == 1:
         return list(string.ascii_lowercase)
     else:
         return
 
 def number(): # Returns numbers if wanted
-    upper = any_input("Numbers(1) No(2):\n", "int")
-    if upper == 1:
+    num = any_input("Numbers(1) No(2):\n", "int")
+    if num == 1:
         return list(string.digits)
     else:
         return
     
 def special(): # Returns special characters if wanted
-    upper = any_input("Special Characters(1) No(2):\n", "int")
-    if upper == 1:
+    spec = any_input("Special Characters(1) No(2):\n", "int")
+    if spec == 1:
         return list(string.punctuation)
     else:
         return
 
-def arrange(chars): # Puts together a password of the wanted length
-    length = any_input("Length: ", "int")
+def arrange(chars, length): # Puts together a password of the wanted length
     word = ""
     letters = 1
     while letters <= length:
