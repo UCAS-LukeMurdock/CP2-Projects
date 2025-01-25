@@ -1,6 +1,6 @@
 #  Reuses
 
-def any_input(prompt, data_type):
+def any_input(prompt, data_type): # Checks and solves errors in int and float inputs
     while True:
         try: 
             if data_type == "int":

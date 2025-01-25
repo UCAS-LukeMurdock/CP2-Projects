@@ -2,7 +2,7 @@
 
 import random, string
 
-def any_input(prompt, data_type):
+def any_input(prompt, data_type): # Checks and solves errors in int and float inputs
     while True:
         try: 
             if data_type == "int":
@@ -14,7 +14,7 @@ def any_input(prompt, data_type):
             continue
         return response
 
-def main(): # 
+def main(): # Lets the user leave or use the functions to create a list and password with the wanted characters.
     print("Welcome to this generator that creates random passwords based on your requirements.")
     while True:
         chars = []
@@ -40,35 +40,35 @@ def main(): #
         word = arrange(chars)
         print(f"Password: {word}")
 
-def uppercase(): # 
+def uppercase(): # Returns the uppercase letters if wanted
     upper = any_input("Uppercase Letters(1) No(2):\n", "int")
     if upper == 1:
         return list(string.ascii_uppercase)
     else:
         return
 
-def lowercase(): # 
+def lowercase(): # Returns the lowercase letters if wanted
     upper = any_input("Lowercase Letters(1) No(2):\n", "int")
     if upper == 1:
         return list(string.ascii_lowercase)
     else:
         return
 
-def number(): # 
+def number(): # Returns numbers if wanted
     upper = any_input("Numbers(1) No(2):\n", "int")
     if upper == 1:
         return list(string.digits)
     else:
         return
     
-def special(): # 
+def special(): # Returns special characters if wanted
     upper = any_input("Special Characters(1) No(2):\n", "int")
     if upper == 1:
         return list(string.punctuation)
     else:
         return
 
-def arrange(chars): # 
+def arrange(chars): # Puts together a password of the wanted length
     length = any_input("Length: ", "int")
     word = ""
     letters = 1
