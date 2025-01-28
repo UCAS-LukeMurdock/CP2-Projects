@@ -12,7 +12,7 @@ def num_input(prompt, data_type, range = 0): # Checks and solves errors in int a
         except ValueError:
             print("Invalid Input Type")
             continue
-        if range == 0 or response > 0 or response > range:
+        if range == 0 or (response > 0 and response <= range):
             break
         else:
             print("Not In Range")
