@@ -1,6 +1,6 @@
 #  Reuses
 
-def any_input(prompt, data_type): # Checks and solves errors in int and float inputs
+def num_input(prompt, data_type, range = 0): # Checks and solves errors in int and float inputs
     while True:
         try: 
             if data_type == "int":
@@ -10,8 +10,12 @@ def any_input(prompt, data_type): # Checks and solves errors in int and float in
         except ValueError:
             print("Invalid Input Type")
             continue
-        return response
-
+        if range == 0 or (response > 0 and response <= range):
+            break
+        else:
+            print("Not In Range")
+            continue
+    return response
 
 #inputs
 
