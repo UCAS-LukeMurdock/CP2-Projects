@@ -83,10 +83,11 @@ def main(): # Lets the user leave or use the functions to create a list and pass
             chars.extend(special())
         except:
             pass
-        length = num_input("Length: ", "int")
         if chars == []:
             print("No Characters Selected For Password")
             continue
+        length = num_input("Length: ", "int", 1)
+        
         for word_num in range(1,5):
             word = arrange(chars, length)
             print(f"Password {word_num}: {word}")
