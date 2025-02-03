@@ -24,10 +24,11 @@ def num_input(prompt, data_type, range = 0): # Checks and solves errors in int a
 def morse(): # Translates a word into Morse
     while True:
         word = input("Type the English word you want translated into Morse:\n").lower()
-        correct = False
         code = ""
         list(word)
+
         for letter in word:
+            correct = False
             for eng_ind, eng_letter in enumerate(eng_letters):
                 if letter == eng_letter:
                     code += f"{morse_letters[eng_ind]} "
@@ -45,13 +46,14 @@ def morse(): # Translates a word into Morse
 def english(): # Translates Morse Code into an English word
     while True:
         code = input("Type the Morse you want translated into English:\n")
-        correct = False
         word = ""
-        code.split(" ")
+        code = code.split(" ")
+
         for letter in code:
+            correct = False
             for morse_ind, morse_letter in enumerate(morse_letters):
                 if letter == morse_letter:
-                    word += f"{eng_letters[morse_ind]} "
+                    word += f"{eng_letters[morse_ind]}"
                     correct = True
                     break
             if correct == False:
@@ -60,7 +62,7 @@ def english(): # Translates Morse Code into an English word
         if correct == False:
             continue
         elif correct == True:
-            print(f"In English: {word.title()}")
+            print(f"In English: {word.upper()}")
         break
 
 def main(): # Lets user choose what they want their text translated into
@@ -71,5 +73,9 @@ def main(): # Lets user choose what they want their text translated into
             morse()
         elif choice == 2:
             english()
+        elif choice == 3:
+            break
+        else:
+            print("Something Broke")
 
 main()
