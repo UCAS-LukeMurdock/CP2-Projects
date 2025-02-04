@@ -21,7 +21,7 @@ def num_input(prompt, data_type, range = 0): # Checks and solves errors in int a
             continue 
     return response
 
-def morse(): # Translates a word into Morse
+def morse(): # Translates words into Morse
     while True:
         words = input("Type the English you want translated into Morse:\n").lower()
         words = words.split(' ')
@@ -51,7 +51,7 @@ def morse(): # Translates a word into Morse
             print(f"In Morse Code: {code}")
         break
 
-def english(): # Translates Morse Code into an English word
+def english(): # Translates Morse Code into English
     correct = False
     while True:
         codes = input("Type the Morse you want translated into English (Put ' / ' for space):\n")
