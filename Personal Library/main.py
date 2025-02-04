@@ -1,7 +1,27 @@
 # Luke Murdock, Personal Library
 
-books = {("Fablehaven", "Brandon Mull"), ("Dragonwatch", "Brandon Mull"), ("Five Kingdoms", "Brandon Mull"), ("Beyonders", "Brandon Mull"), ("Michael Vey", "Richard Paul Evans"), ("Percy Jackson", "Rick Riordan"), ("39 Clues", "Rick Riordan"), ("Leven Thumps", "Obert Skye"), 
-         ("Pillage", "Obert Skye"), ("Wings of Fire", "Tui T. Sutherland"), ("Lord of the Rings", "J.R.R. Tolkien"), ("The Hobbit", "J.R.R. Tolkien"), ("The Stormlight Archive", "Brandon Sanderson"), ("Mistborn", "Brandon Sanderson"), ("Elantris", "Brandon Sanderson"), }
+books = [{"Fablehaven", "Brandon Mull"}, 
+        ("Dragonwatch", "Brandon Mull"), 
+        ("Five Kingdoms", "Brandon Mull"), 
+        ("Beyonders", "Brandon Mull"), 
+        ("Michael Vey", "Richard Paul Evans"), 
+        ("Percy Jackson", "Rick Riordan"), 
+        ("39 Clues", "Rick Riordan"), 
+        ("Leven Thumps", "Obert Skye"), 
+        ("Pillage", "Obert Skye"),
+        ("Wings of Fire", "Tui T. Sutherland"), 
+        ("Lord of the Rings", "J.R.R. Tolkien"), 
+        ("The Hobbit", "J.R.R. Tolkien"), 
+        ("The Stormlight Archive", "Brandon Sanderson"), 
+        ("Mistborn", "Brandon Sanderson"), 
+        ("Elantris", "Brandon Sanderson"), 
+]
+
+books = [
+    {
+        
+    }
+]
 
 def main(): # This funcion prints the list and lets the user choose what they want to do with the list.
     while True:
@@ -51,7 +71,7 @@ def add(): # This funciton adds the user's desired book's title and author to th
         break
 
     add_book = (book_title, book_author)
-    books.add(add_book)
+    books.append(add_book)
 
 def remove(): # This function removes the user's desired book from the list, if it's in the list
     while True:
