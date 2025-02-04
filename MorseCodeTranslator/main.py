@@ -1,8 +1,8 @@
 # Luke Murdock, Simple Morse Code Translator
 
-eng_letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+eng_letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', ' ']
 
-morse_letters = ['._', '_...', '_._.', '_..', '.', '.._.', '__.', '....', '..', '.___', '_._', '._..', '__', '_.', '___', '.__.', '__._', '._.', '...', '_', '.._', '..._', '.__', '_.._', '_.__', '__..']
+morse_letters = ['._', '_...', '_._.', '_..', '.', '.._.', '__.', '....', '..', '.___', '_._', '._..', '__', '_.', '___', '.__.', '__._', '._.', '...', '_', '.._', '..._', '.__', '_.._', '_.__', '__..', ' / ']
 
 def num_input(prompt, data_type, range = 0): # Checks and solves errors in int and float inputs
     while True:
@@ -23,42 +23,58 @@ def num_input(prompt, data_type, range = 0): # Checks and solves errors in int a
 
 def morse(): # Translates a word into Morse
     while True:
-        word = input("Type the English word you want translated into Morse:\n").lower()
+        words = input("Type the English you want translated into Morse:\n").lower()
+        words = words.split(' ')
+        for word_ind, word in enumerate(words):
+        	words[word_ind] = list(word)
         code = ""
-        list(word)
 
-        for letter in word:
-            correct = False
-            for eng_ind, eng_letter in enumerate(eng_letters):
-                if letter == eng_letter:
-                    code += f"{morse_letters[eng_ind]} "
-                    correct = True
-                    break
+        for word in words:
+            for letter in word:
+                correct = False
+                for eng_ind, eng_letter in enumerate(eng_letters):
+                    if letter == eng_letter:
+                        code += f"{morse_letters[eng_ind]} "
+                        correct = True
+                        break
+                if correct == False:
+                	break
             if correct == False:
                 print("Contains Special Characters. Try Again")
                 break
+            code = code.rstrip()
+            code += " / "
         if correct == False:
             continue
         elif correct == True:
+            code = code[:-3]
             print(f"In Morse Code: {code}")
         break
 
 def english(): # Translates Morse Code into an English word
+    correct = False
     while True:
-        code = input("Type the Morse you want translated into English:\n")
+        codes = input("Type the Morse you want translated into English (Put ' / ' for space):\n")
+        codes = codes.split(' / ')
+        for code_ind, code in enumerate(codes):
+            codes[code_ind] = code.split(' ')
+            codes[code_ind].append(' / ')
         word = ""
-        code = code.split(" ")
 
-        for letter in code:
-            correct = False
-            for morse_ind, morse_letter in enumerate(morse_letters):
-                if letter == morse_letter:
-                    word += f"{eng_letters[morse_ind]}"
-                    correct = True
-                    break
+        for code in codes:
+            for letter in code:
+                correct = False
+                for morse_ind, morse_letter in enumerate(morse_letters):
+                    if letter == morse_letter:
+                        word += f"{eng_letters[morse_ind]}"
+                        correct = True
+                        break
+                if correct == False:
+                	break
             if correct == False:
                 print("Contains Incorrect Morse Code. Try Again")
                 break
+            code += " "
         if correct == False:
             continue
         elif correct == True:
