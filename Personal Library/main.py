@@ -1,49 +1,101 @@
 # Luke Murdock, Personal Library
 
-books = [{"Fablehaven", "Brandon Mull"}, 
-        ("Dragonwatch", "Brandon Mull"), 
-        ("Five Kingdoms", "Brandon Mull"), 
-        ("Beyonders", "Brandon Mull"), 
-        ("Michael Vey", "Richard Paul Evans"), 
-        ("Percy Jackson", "Rick Riordan"), 
-        ("39 Clues", "Rick Riordan"), 
-        ("Leven Thumps", "Obert Skye"), 
-        ("Pillage", "Obert Skye"),
-        ("Wings of Fire", "Tui T. Sutherland"), 
-        ("Lord of the Rings", "J.R.R. Tolkien"), 
-        ("The Hobbit", "J.R.R. Tolkien"), 
-        ("The Stormlight Archive", "Brandon Sanderson"), 
-        ("Mistborn", "Brandon Sanderson"), 
-        ("Elantris", "Brandon Sanderson"), 
-]
-
 books = [
     {
-        
-    }
+        "title": "Fablehaven",
+        "author": "Brandon Mull",
+        "genre": "Fantasy",
+        "stars": 4,
+        "times read": 2
+    },
+    {
+        "title": "Dragonwatch",
+        "author": "Brandon Mull",
+        "genre": "Fantasy",
+        "stars": 5,
+        "times read": 1
+    },
+    {
+        "title": "Five Kingdoms",
+        "author": "Brandon Mull",
+        "genre": "Fantasy",
+        "stars": 5,
+        "times read": 2
+    },
+    {
+        "title": "Beyonders",
+        "author": "Brandon Mull",
+        "genre": "Fantasy",
+        "stars": 4,
+        "times read": 1
+    },
+    {
+        "title": "Michael Vey",
+        "author": "Richard Paul Evans",
+        "genre": "Fantasy",
+        "stars": 4,
+        "times read": 1
+    },
+    {
+        "title": "Rick Riordan",
+        "author": "Brandon Mull",
+        "genre": "Fantasy",
+        "stars": 4,
+        "times read": 1
+    },
+    {
+        "title": "Leven Thumps",
+        "author": "Obert Skye",
+        "genre": "Fantasy",
+        "stars": 4,
+        "times read": 0
+    },
+    {
+        "title": "Wings of Fire",
+        "author": "Tui T. Sutherland",
+        "genre": "Fantasy",
+        "stars": 4,
+        "times read": 3
+    },
+    {
+        "title": "The Stormlight Archive",
+        "author": "Brandon Sanderson",
+        "genre": "Fantasy",
+        "stars": 5,
+        "times read": 1
+    },
+    {
+        "title": "Refugee",
+        "author": "Alan Gratz",
+        "genre": "Historical Fiction",
+        "stars": 3,
+        "times read": 1
+    },
 ]
 
-def main(): # This funcion prints the list and lets the user choose what they want to do with the list.
+def num_input(prompt, data_type, range = 0): # Checks and solves errors in int and float inputs
     while True:
-        print(f"\nBook Library:\n{books}")
-
-        try:
-            choice = int(input("Search(1) Add(2) Remove(3) Exit(4)\n"))
-        except:
-            print("Incorrect Input")
+        try: 
+            if data_type == "int":
+                response = int(input(prompt))
+            elif data_type == "float":
+                response = float(input(prompt))
+        except ValueError:
+            print("Invalid Input Type")
             continue
-
-        if choice == 1:
-            search()
-        elif choice == 2:
-            add()
-        elif choice == 3:
-            remove()
-        elif choice == 4:
+        if range == 0 or (response > 0 and response <= range):
             break
         else:
-            print("Incorrect Integer")
+            print("Not In Range")
             continue
+    return response
+
+def simple_display(): # Displays the Titles and Authors
+    print(f"")
+    pass
+
+def display_all(): # Displays All of the Information
+    pass
 
 def search(): # This function searchs for the user's key word inside of the titles and authors of the books in the list and prints them
     search_results = []
@@ -63,14 +115,23 @@ def search(): # This function searchs for the user's key word inside of the titl
 def add(): # This funciton adds the user's desired book's title and author to the library list
     while True:
         try:
-            book_title = str(input("Title of The Book You Want Added: "))
-            book_author = str(input("Author of The Book You Want Added: "))
+            title = input("Title of The Book You Want Added: ")
+            author = input("Author of The Book You Want Added: ")
+            genre = input("Genre of The Book You Want Added: ")
+            stars = num_input("Rating out of 5 Stars for The Book You Want Added: ")
+            times_read = num_input("The Amount of Times You Have Read The Book You Want Added: ")
         except:
             print("Incorrect Input")
             continue
         break
 
-    add_book = (book_title, book_author)
+    add_book = {
+        "title": title,
+        "author": author,
+        "genre": genre,
+        "stars": stars,
+        "times read": times_read}
+    
     books.append(add_book)
 
 def remove(): # This function removes the user's desired book from the list, if it's in the list
@@ -91,5 +152,30 @@ def remove(): # This function removes the user's desired book from the list, if 
         elif book_found == 1:
             books.remove(found_book)
             break
+
+def main(): # This funcion prints the list and lets the user choose what they want to do with the list.
+    while True:
+
+        try:
+            choice = int(input("Simple Display(1) Display All(2) Search(3) Add(4) Remove(5) Exit(6)\n"))
+        except:
+            print("Incorrect Input")
+            continue
+
+        if choice == 1:
+            simple_display()
+        elif choice == 2:
+            display_all()
+        elif choice == 3:
+            search()
+        elif choice == 4:
+            add()
+        elif choice == 5:
+            remove()
+        elif choice == 6:
+            break
+        else:
+            print("Incorrect Integer")
+            continue
 
 main()
