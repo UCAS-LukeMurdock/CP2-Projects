@@ -21,6 +21,10 @@ def num_input(prompt, data_type, range = 0): # Checks and solves errors in int a
             continue 
     return response
 
+def text():
+
+    text = 
+
 def morse(): # Translates words into Morse
     while True:
         words = input("Type the English you want translated into Morse:\n").lower()
@@ -45,11 +49,11 @@ def morse(): # Translates words into Morse
             code = code.rstrip()
             code += " / "
         if correct == False:
-            continue
+            continue False
         elif correct == True:
             code = code[:-3]
             print(f"In Morse Code: {code}")
-        break
+        return True
 
 def english(): # Translates Morse Code into English
     correct = False
