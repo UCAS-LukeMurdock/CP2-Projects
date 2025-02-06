@@ -1,6 +1,6 @@
 #  Reuses
 
-def num_input(prompt, data_type, range = 0): # Checks and solves errors in int and float inputs
+def num_input(prompt, range = 0, data_type = "int"): # Checks and solves errors in int and float inputs (Has Range If Needed)
     while True:
         try: 
             if data_type == "int":
