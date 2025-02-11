@@ -31,6 +31,7 @@ with open("Movie Recommender\Movies list.csv", "r") as file:
         print(row)
         movie = {}
         for detail_index, detail in enumerate(row):
+            #
             movie.update({detail_types[row_index]:row[row_index]})
         movies.append({detail_types[row_index]:row[row_index]})
 print(movies)
