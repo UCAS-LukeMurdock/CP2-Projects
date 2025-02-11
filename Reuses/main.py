@@ -1,5 +1,8 @@
 #  Reuses
 
+# trim()
+
+
 def num_input(prompt, range = 0, data_type = "int"): # Checks and solves errors in int and float inputs (Has Range If Needed)
     while True:
         try: 
