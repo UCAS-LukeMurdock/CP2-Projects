@@ -1,15 +1,15 @@
 #  Reuses
 
-# trim()
+# strip()
 
 
 def num_input(prompt, range = 0, data_type = "int"): # Checks and solves errors in int and float inputs (Has Range If Needed)
     while True:
         try: 
             if data_type == "int":
-                response = int(input(prompt))
+                response = int(input(prompt).strip())
             elif data_type == "float":
-                response = float(input(prompt))
+                response = float(input(prompt).strip())
         except ValueError:
             print("Invalid Input Type")
             continue

@@ -7,9 +7,9 @@ def num_input(prompt, range = 0, data_type = "int"): # Checks and solves errors 
     while True:
         try: 
             if data_type == "int":
-                response = int(input(prompt))
+                response = int(input(prompt).strip())
             elif data_type == "float":
-                response = float(input(prompt))
+                response = float(input(prompt).strip())
         except ValueError:
             print("Invalid Input Type")
             continue
@@ -20,7 +20,7 @@ def num_input(prompt, range = 0, data_type = "int"): # Checks and solves errors 
             continue
     return response
 
-# 
+# Turns the movies in the file into a list of dictionaries where each movie is one dictionary with it's details as values in it
 with open("Movie Recommender/Movies list.csv", "r") as file:
     reader = csv.reader(file)
     for row_index, row in enumerate(reader):
@@ -32,36 +32,34 @@ with open("Movie Recommender/Movies list.csv", "r") as file:
             movie.update({detail_types[detail_index]:row[detail_index]})
         movies.append(movie)
 
-def display(): # 
-    print("Movies:\n")
+def display(): # Prints all of the movies with all of their details
+    print("\nMovies:\n")
     for movie in movies:
-        print(f"Title- {movie["Title"]}\nDirector- {movie["Director"]}\nGenre- {movie["Genre"]}\nRating- {movie["Rating"]}\nLength (min)- {movie["Length(min)"]}\nNotable Actors- {movie["Notable Actors"]}\n")
+        print(f"Title- {movie["Title"]}\nDirector- {movie["Director"]}\nGenre- {movie["Genre"]}\nRating- {movie["Rating"]}\nLength(min)- {movie["Length (min)"]}\nNotable Actors- {movie["Notable Actors"]}\n")
 
-def recommend(): # 
-    all_results = []
-    print("\nFilter Options: Genre(1) Directors(2) Length(3) Actors(3)")
-    filter_1 = input("\nFirst Filter: ").upper().trim()
-    filter_2 = input("Second Filter: ").upper().trim()
-    all_results.extend(searcher(filter_1))
-    all_results.extend(searcher(filter_2))
-    print("Search Results:\n")
-    if all_results == []:
-        print("None")
-    else:
-        for result in all_results:
-            print(f"Title- {result["Title"]}\nDirector- {result["Director"]}\nGenre- {result["Genre"]}\nRating- {result["Rating"]}\nLength (min)- {result["Length(min)"]}\nNotable Actors- {result["Notable Actors"]}\n")
-    
-def searcher(filter):
+def recommend(): # Asks for 2 filters and then prints movies that fit both filters
+    types = ["Genre", "Director", "Length (min)", "Notable Actors"]
     results = []
+    print("\nFilter Options: Genre(1) Director(2) Length(3) Notable Actors(4)")
+    filter_1 = num_input("\nFirst Filter Type: ", 4) -1
+    search_1 = input("Filter Word: ").lower().strip()
+    filter_2 = num_input("Second Filter Type: ", 4) -1
+    search_2 = input("Filter Word: ").lower().strip()
+
+    for movie in movies:
+        if search_1 in str(movie[types[filter_1]]).lower() and search_2 in str(movie[types[filter_2]]).lower():
+            results.append(movie)
+    print("\nSearch Results:\n")
+    if results == []:
+        print("None\n")
+    else:
+        for result in results:
+            print(f"Title- {result["Title"]}\nDirector- {result["Director"]}\nGenre- {result["Genre"]}\nRating- {result["Rating"]}\nLength(min)- {result["Length (min)"]}\nNotable Actors- {result["Notable Actors"]}\n")
     
-
-
-    return results
-
-def main(): # 
+def main(): # Introduces the program and then lets the user choose one of the options
     print("Welcome, this is a program with 105 movies which can be displayed or recommended")
     while True:
-        choice = num_input("Display(1) Recommend(2)\n")
+        choice = num_input("Display(1) Recommend(2)\n", 2)
         if choice == 1:
             display()
         elif choice == 2:
