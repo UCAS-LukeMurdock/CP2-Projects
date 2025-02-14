@@ -19,18 +19,23 @@ def num_input(prompt, range = 0, data_type = "int"): # Checks and solves errors 
             continue
     return response
 
-def func1():
+def func1(): # 
     print("")
 
-def main(): # This funcion welcomes the user, then lets the user choose what they want to do
-    print("Welcome to my library, where you can see, add, remove, or search through it.")
+def func2(): # 
+    print("")
+
+def func3(): # 
+    print("")
+
+def main(): # Introduces the program and then lets the user choose one of the options
+    print("Welcome, where you can see, add, remove, or search through it.")
     while True:
-        choice = num_input("\nSimple Display(1) Display All(2) Search(3) Add(4) Remove(5) Edit(6) Exit(7)\n", 7)
+        choice = num_input("\nDisplay(1) Search(2) Add(3) Remove(4) Edit(5) Exit(6)\n", 6)
 
         if choice == 1:
             ()
         elif choice == 2:
-            print("\nLibrary:")
             ()
         elif choice == 3:
             ()
@@ -39,10 +44,10 @@ def main(): # This funcion welcomes the user, then lets the user choose what the
         elif choice == 5:
             ()
         elif choice == 6:
-            ()
-        elif choice == 7:
             print("Come Back Soon!")
             break
         else:
             print("Something Broke")
             continue
+
+main()
