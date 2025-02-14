@@ -20,11 +20,13 @@ def num_input(prompt, range = 0, data_type = "int"): # Checks and solves errors 
     return response
 
 # 
-with open("To Do List\list.csv", "") as file:
+with open("To Do List\list.csv", "r") as file:
     pass
 
-def display(): # 
-    print("")
+def display(): # Prints all of 
+    print("\nTo-Do List:\n")
+    for task in tasks:
+        print(f"- {}\n- {}\n- {}\n- {}\n")
 
 def add(): # 
     print("")
@@ -42,7 +44,6 @@ def main(): # Introduces the program and then lets the user choose one of the op
     print("Welcome to this to-do list program that lets you add, mark complete, unmark, or delete a task from the list")
     while True:
         choice = num_input("\nDisplay(1) Search(2) Add(3) Remove(4) Edit(5) Exit(6)\n", 6)
-
         if choice == 1:
             display()
         elif choice == 2:

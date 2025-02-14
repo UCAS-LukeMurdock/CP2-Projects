@@ -19,8 +19,10 @@ def num_input(prompt, range = 0, data_type = "int"): # Checks and solves errors 
             continue
     return response
 
-def func1(): # 
-    print("")
+def display(): # Prints all of 
+    print("\n:\n")
+    # for in :
+        #print(f"- {}\n- {}\n- {}\n- {}\n")
 
 def func2(): # 
     print("")
@@ -32,9 +34,8 @@ def main(): # Introduces the program and then lets the user choose one of the op
     print("Welcome, where you can see, add, remove, or search through it.")
     while True:
         choice = num_input("\nDisplay(1) Search(2) Add(3) Remove(4) Edit(5) Exit(6)\n", 6)
-
         if choice == 1:
-            ()
+            display()
         elif choice == 2:
             ()
         elif choice == 3:
