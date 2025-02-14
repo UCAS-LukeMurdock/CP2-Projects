@@ -59,11 +59,14 @@ def recommend(): # Asks for 2 filters and then prints movies that fit both filte
 def main(): # Introduces the program and then lets the user choose one of the options
     print("Welcome, this is a program with 105 movies which can be displayed or recommended")
     while True:
-        choice = num_input("Display(1) Recommend(2)\n", 2)
+        choice = num_input("Display(1) Recommend(2) Exit(3)\n", 3)
         if choice == 1:
             display()
         elif choice == 2:
             recommend()
+        elif choice == 3:
+            print("Come Back Soon!")
+            break
         else:
             print("Something Broke!")
 
