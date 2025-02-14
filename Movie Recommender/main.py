@@ -38,16 +38,22 @@ def display(): # Prints all of the movies with all of their details
         print(f"Title- {movie["Title"]}\nDirector- {movie["Director"]}\nGenre- {movie["Genre"]}\nRating- {movie["Rating"]}\nLength(min)- {movie["Length (min)"]}\nNotable Actors- {movie["Notable Actors"]}\n")
 
 def recommend(): # Asks for 2 filters and then prints movies that fit both filters
-    types = ["Genre", "Director", "Length (min)", "Notable Actors"]
+    types = ["Genre", "Director", "Rating", "Notable Actors"]
     results = []
-    print("\nFilter Options: Genre(1) Director(2) Length(3) Notable Actors(4)")
+    print("\nFilter Options: Genre(1) Director(2) Rating(3) Notable Actors(4)")
     filter_1 = num_input("\nFirst Filter Type: ", 4) -1
     search_1 = input("Filter Word: ").lower().strip()
     filter_2 = num_input("Second Filter Type: ", 4) -1
     search_2 = input("Filter Word: ").lower().strip()
 
     for movie in movies:
-        if search_1 in str(movie[types[filter_1]]).lower() and search_2 in str(movie[types[filter_2]]).lower():
+        if filter_1 == 2: # Checks if user picked Rating or not then searches depending on that
+            if search_1 == movie["Rating"].lower() and search_2 in str(movie[types[filter_2]]).lower():
+                results.append(movie)
+        elif filter_2 == 2:
+            if search_2 == movie["Rating"].lower() and search_1 in str(movie[types[filter_1]]).lower():
+                results.append(movie)
+        elif search_1 in str(movie[types[filter_1]]).lower() and search_2 in str(movie[types[filter_2]]).lower():
             results.append(movie)
     print("\nSearch Results:\n")
     if results == []:
@@ -55,7 +61,7 @@ def recommend(): # Asks for 2 filters and then prints movies that fit both filte
     else:
         for result in results:
             print(f"Title- {result["Title"]}\nDirector- {result["Director"]}\nGenre- {result["Genre"]}\nRating- {result["Rating"]}\nLength(min)- {result["Length (min)"]}\nNotable Actors- {result["Notable Actors"]}\n")
-    
+
 def main(): # Introduces the program and then lets the user choose one of the options
     print("Welcome, this is a program with 105 movies which can be displayed or recommended")
     while True:
