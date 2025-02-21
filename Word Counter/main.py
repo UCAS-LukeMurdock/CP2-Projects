@@ -1,6 +1,15 @@
-#Luke Murdock, 
+#Luke Murdock, Word Counter
 import csv
+#import 
 
+'''
+Uses at least 3 pages 
+    (main, file handling, and time handling) 
+    Note: main is the only file name I've given you
+Reads and Writes to the file
+Uses functional decomposition
+Lets the user tell what file to use it on
+'''
 
 def num_input(prompt, range = 0, data_type = "int"): # Checks and solves errors in int and float inputs (Has Range If Needed)
     while True:
@@ -19,15 +28,12 @@ def num_input(prompt, range = 0, data_type = "int"): # Checks and solves errors 
             continue
     return response
 
-def display(): # Prints all of 
+def display(): # Prints the file's contents
     print("\n:\n")
     # for in :
         #print(f"- {}\n- {}\n- {}\n- {}\n")
 
-def func2(): # 
-    print("")
-
-def func3(): # 
+def func1(): # 
     print("")
 
 def main(): # Introduces the program and then lets the user choose one of the options

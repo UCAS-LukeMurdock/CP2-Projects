@@ -1,5 +1,4 @@
 #Luke Murdock, To Do List
-import csv
 
 tasks = []
 # Splits the text file into lists and turns that into a list of dictionaries
