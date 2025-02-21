@@ -1,7 +1,18 @@
 #  Reuses
 
-# strip()
-
+def int_input(prompt, range = 0): # Checks and solves errors in integer inputs (Has Range If Needed)
+    while True:
+        try: 
+            response = int(input(prompt).strip())
+        except ValueError:
+            print("Invalid Input Type")
+            continue
+        if range == 0 or (response > 0 and response <= range):
+            break
+        else:
+            print("Not In Range")
+            continue
+    return response
 
 def num_input(prompt, range = 0, data_type = "int"): # Checks and solves errors in int and float inputs (Has Range If Needed)
     while True:

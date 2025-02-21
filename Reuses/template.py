@@ -2,13 +2,10 @@
 import csv
 
 
-def num_input(prompt, range = 0, data_type = "int"): # Checks and solves errors in int and float inputs (Has Range If Needed)
+def int_input(prompt, range = 0): # Checks and solves errors in integer inputs (Has Range If Needed)
     while True:
         try: 
-            if data_type == "int":
-                response = int(input(prompt).strip())
-            elif data_type == "float":
-                response = float(input(prompt).strip())
+            response = int(input(prompt).strip())
         except ValueError:
             print("Invalid Input Type")
             continue
@@ -33,7 +30,7 @@ def func3(): #
 def main(): # Introduces the program and then lets the user choose one of the options
     print("Welcome, where you can see, add, remove, or search through it.")
     while True:
-        choice = num_input("\nDisplay(1) Search(2) Add(3) Remove(4) Edit(5) Exit(6)\n", 6)
+        choice = int_input("\nDisplay(1) Search(2) Add(3) Remove(4) Edit(5) Exit(6)\n", 6)
         if choice == 1:
             display()
         elif choice == 2:
