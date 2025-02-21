@@ -27,8 +27,10 @@ def add(score): # Finds out what to add
 
 
 # FAIRUS'S CODE ------------------------------------------------------------------------------------------------
-
-main()
+try:
+    main()
+except:
+    print("You FAILED! :(")
 
 '''
 tasks = []
