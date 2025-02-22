@@ -1,7 +1,15 @@
 #Luke Murdock, Group 2 Code
+import csv
+
+profiles = [
+    {
+        
+    }
+]
+
 
 def main(): # Introduces the program and then lets the user choose one of the options
-    print("Welcome, ")
+    print("Welcome to this game program, it has two different games and keeps tracks of scores and user profiles")
     while True:
         choice = input("\nGames(1) Scores(2) Profiles(3) Exit(4)\n")
         if choice == 1:
@@ -23,14 +31,15 @@ def main(): # Introduces the program and then lets the user choose one of the op
 def add(score): # Finds out what to add
     name = input("What is your username?: ").strip()
     #search
+
     
 
 
 # FAIRUS'S CODE ------------------------------------------------------------------------------------------------
-try:
+    
+
+
     main()
-except:
-    print("You FAILED! :(")
 
 '''
 tasks = []

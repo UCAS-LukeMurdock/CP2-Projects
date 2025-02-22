@@ -34,7 +34,7 @@ def func1(): #
 def main(): # Introduces the program and then lets the user choose one of the options
     print("Welcome, where you can see, add, remove, or search through it.")
     while True:
-        choice = int_input("\nDisplay(1) Search(2) Add(3) Remove(4) Edit(5) Exit(6)\n", 6)
+        choice = int_input("\nDisplay(1) Read(2) Write(3) (4) (5) Exit(6)\n", 6)
         if choice == 1:
             display()
         elif choice == 2:
