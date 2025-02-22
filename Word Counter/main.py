@@ -1,5 +1,4 @@
 #Luke Murdock, Word Counter
-import csv
 #import 
 
 '''
