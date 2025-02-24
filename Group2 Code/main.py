@@ -69,7 +69,8 @@ def add(score, game): # Finds out what to add
             found_ind = profile_ind
             break
     if found == False:
-        print("You don't seem to have a profile. Lets create one")
+        choice = int_input("Couldn't Find Profile. Try Again(1) Create Profile(2)", 2)
+        if choice == 
         add_profile(name)
         print("Added Your Profile!")
         found_ind = -1
