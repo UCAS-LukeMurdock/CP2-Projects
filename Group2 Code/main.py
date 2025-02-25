@@ -20,7 +20,7 @@ import csv
 
 profiles = []
 #
-with open("Group2 Code/scores.csv", "r") as file:
+with open("Scores.csv", "r") as file:
     reader = csv.reader(file)
     for row_index, row in enumerate(reader):
         if row_index == 0:
@@ -30,16 +30,12 @@ with open("Group2 Code/scores.csv", "r") as file:
         for detail_index, detail in enumerate(row):
             if detail_index == 1 or detail_index == 2 or detail_index == 3:
                 detail = int(detail)
-                # detail = eval(detail)
-                # detail = detail[1:-1].split(",") # This commented code doesn't work for short lists
-                # for char_ind, char in enumerate(detail):
-                #     detail[char_ind] = int(char.strip())
             profile.update({detail_types[detail_index]:detail})
         profiles.append(profile)
 
 def write(): # 
     with open ("Group2 Code/scores.csv", "w", newline="") as file:
-        fieldnames = ["Name","React Scores","Box Scores","Guess Scores","Genre"]
+        fieldnames = ["Name","React Score","Box Score","Guess Score","Genre"]
         writer = csv.DictWriter(file, fieldnames=fieldnames)
         writer.writeheader()
         writer.writerows(profiles)
@@ -61,7 +57,7 @@ def int_input(prompt, range = 0): # Checks and solves errors in integer inputs (
 # VINCENT'S CODE -----------------------------------------------------------------------------------------------
 
 # LUKE'S CODE --------------------------------------------------------------------------------------------------
-def add(score, game): # Finds out what to add
+def add(score, game_name): # Finds out what to add
     while True:
         found = False
         name = input("What is your username?: ").strip()
@@ -82,18 +78,20 @@ def add(score, game): # Finds out what to add
         elif found == True:
             print("Found Your Profile!")
             break
-        
-    profiles[found_ind][f"{game} Scores"] = score
-    print("Successfully Added The Score!")
+    if score > profiles[found_ind][f"{game_name} Scores"]:
+        profiles[found_ind][f"{game_name} Scores"] = score
+        print("Successfully Added Your New Highest Score!")
+    elif score <= profiles[found_ind][f"{game_name} Scores"]:
+        print("You did not score higher than your highest score, so your score wasn't added")
     write()
 
 def add_profile(name):
     genre = input("What is your favorite game genre?: ").strip()
     new_profile = {
         "Name": name, 
-        "React Scores": 0, 
-        "Box Scores": 0,
-        "Guess Scores": 0, 
+        "React Score": 0,
+        "Box Score": 0,
+        "Guess Score": 0,
         "Genre": genre
     }
     profiles.append(new_profile)
@@ -102,7 +100,7 @@ def add_profile(name):
 def display_profiles():
     print("Profiles:")
     for profile in profiles:
-        print(f"\nUsername- {profile["Name"]}\nReaction Game Scores- {profile["React Scores"]}\nReaction Box Game Scores- {profile["Box Scores"]}\nNumber Guessing Game Scores- {profile["Guess Scores"]}\nFavorite Genre- {profile["Genre"]}\n")
+        print(f"\nUsername- {profile["Name"]}\nReaction Game Scores- {profile["React Score"]}\nReaction Box Game Scores- {profile["Box Score"]}\nNumber Guessing Game Scores- {profile["Guess Score"]}\nFavorite Genre- {profile["Genre"]}\n")
 
 # FAIRUS'S CODE ------------------------------------------------------------------------------------------------
     
@@ -113,7 +111,7 @@ def main(): # Introduces the program and then lets the user choose one of the op
     while True:
         choice = int_input("\nGames(1) Scores(2) Profiles(3) Exit(4)\n", 4)
         if choice == 1:
-            add(10, "React")
+            add(12, "React")
         elif choice == 2:
             scores()
         elif choice == 3:
