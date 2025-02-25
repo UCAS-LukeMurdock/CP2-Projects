@@ -4,16 +4,16 @@ import csv
 # some_profiles = [
 #     {
 #         "Name": "Bob",
-#         "React Scores": [1,2,5],
-#         "Box Scores": [1,2,5],
-#         "Guess Scores": [1,2,5],
+#         "React Scores": 5,
+#         "Box Scores": 7 ,
+#         "Guess Scores": 0,
 #         "Genre": "Adventure",
 #     },
 #     {
 #         "Name": "Joe",
-#         "React Scores": [1,2,5],
-#         "Box Scores": [1,2,5],
-#         "Guess Scores": [1,2,5],
+#         "React Scores": 3,
+#         "Box Scores": 6,
+#         "Guess Scores": 9,
 #         "Genre": "Roguelike",
 #     }
 # ]
@@ -29,7 +29,8 @@ with open("Group2 Code/scores.csv", "r") as file:
         profile = {}
         for detail_index, detail in enumerate(row):
             if detail_index == 1 or detail_index == 2 or detail_index == 3:
-                detail = eval(detail)
+                detail = int(detail)
+                # detail = eval(detail)
                 # detail = detail[1:-1].split(",") # This commented code doesn't work for short lists
                 # for char_ind, char in enumerate(detail):
                 #     detail[char_ind] = int(char.strip())
@@ -61,23 +62,28 @@ def int_input(prompt, range = 0): # Checks and solves errors in integer inputs (
 
 # LUKE'S CODE --------------------------------------------------------------------------------------------------
 def add(score, game): # Finds out what to add
-    found = False
-    name = input("What is your username?: ").strip()
-    for profile_ind, profile in enumerate(profiles):
-        if name == profile["Name"]:
-            found = True
-            found_ind = profile_ind
+    while True:
+        found = False
+        name = input("What is your username?: ").strip()
+        for profile_ind, profile in enumerate(profiles):
+            if name == profile["Name"]:
+                found = True
+                found_ind = profile_ind
+                break
+        if found == False:
+            choice = int_input("Couldn't Find Profile\nTry Again(1) Create Profile(2)\n", 2)
+            if choice == 1:
+                continue
+            if choice == 2:
+                add_profile(name)
+                print("Added Your Profile!")
+                found_ind = -1
+                break
+        elif found == True:
+            print("Found Your Profile!")
             break
-    if found == False:
-        choice = int_input("Couldn't Find Profile. Try Again(1) Create Profile(2)", 2)
-        if choice == 
-        add_profile(name)
-        print("Added Your Profile!")
-        found_ind = -1
-    elif found == True:
-        print("Found Your Profile!")
-    
-    profiles[found_ind][f"{game} Scores"].append(score)
+        
+    profiles[found_ind][f"{game} Scores"] = score
     print("Successfully Added The Score!")
     write()
 
@@ -85,9 +91,9 @@ def add_profile(name):
     genre = input("What is your favorite game genre?: ").strip()
     new_profile = {
         "Name": name, 
-        "React Scores": [], 
-        "Box Scores": [], 
-        "Guess Scores": [], 
+        "React Scores": 0, 
+        "Box Scores": 0,
+        "Guess Scores": 0, 
         "Genre": genre
     }
     profiles.append(new_profile)
