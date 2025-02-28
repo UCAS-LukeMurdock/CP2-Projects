@@ -1,5 +1,5 @@
 #Luke Murdock, Word Counter
-from file_handle import count
+from file_handler import count
 
 def main(): # Lets the user choose to get their desired text file Word Counted and Time Stamped or exit
     print("Welcome to this program that will add a word count and a time stamp to the end of a specified text file")
