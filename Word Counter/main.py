@@ -28,9 +28,6 @@ def display(): # Prints the file's contents
     # for in :
         #print(f"- {}\n- {}\n- {}\n- {}\n")
 
-def func1(): # 
-    print("")
-
 def main(): # Introduces the program and then lets the user choose one of the options
     print("Welcome, where you can see, add, remove, or search through it.")
     while True:
