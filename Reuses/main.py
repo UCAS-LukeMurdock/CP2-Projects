@@ -1,13 +1,13 @@
 #  Reuses
 
-def int_input(prompt, range = 0): # Checks and solves errors in integer inputs (Has Range If Needed)
+def int_input(prompt, range = 0, zero = False): # Checks and solves errors in integer inputs (Has Range If Needed)
     while True:
         try: 
             response = int(input(prompt).strip())
         except ValueError:
             print("Invalid Input Type")
             continue
-        if range == 0 or (response > 0 and response <= range):
+        if range == 0 or (response > 0 and response <= range and zero == False) or (zero == True and range >= 0 and response <= range):
             break
         else:
             print("Not In Range")
