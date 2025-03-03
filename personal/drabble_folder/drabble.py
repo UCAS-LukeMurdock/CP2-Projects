@@ -17,26 +17,37 @@ def int_input(prompt, range = 0, zero = False): # Checks and solves errors in in
     return response
 
 prompts = ["What does your world look like? Could you draw a map of it? Does this matter in your world?",
-           "What food does your character like? Is it inspired by where they are from?",
-           "Your character somehow gets rich? How? What does he do with his newfound money? Does he use it selfishly or generously?",
-           "What does your character like to do as a hobby?",
-           "What would be your favorite topic to write a book about?",
-           ]
+        "What food does your character like? Is it inspired by where they are from?",
+        "Your character somehow gets rich? How? What does he do with his newfound money? Does he use it selfishly or generously?",
+        "What does your character like to do as a hobby?",
+        "What would be your favorite topic to write a book about?",
+        ]
 vocab_words = ["co·na·tion /kōˈnāSH(ə)n/ (noun) the mental faculty of purpose, desire, or will to perform an action; volition.",
-             "fa·nat·i·cal /fəˈnadək(ə)l/ (adjective) filled with excessive and single-minded zeal.\n\tobsessively concerned with something.",
-             "pen·sive /ˈpensiv/ (adjective) engaged in, involving, or reflecting deep or serious thought.",
-             "el·o·quent /ˈeləkwənt/ (adjective) fluent or persuasive in speaking or writing.\n\tclearly expressing or indicating something.",
-             "ut·ter /ˈədər/ (adjective) complete; absolute.",
-           ]
+            "fa·nat·i·cal /fəˈnadək(ə)l/ (adjective) filled with excessive and single-minded zeal.\n\tobsessively concerned with something.",
+            "pen·sive /ˈpensiv/ (adjective) engaged in, involving, or reflecting deep or serious thought.",
+            "el·o·quent /ˈeləkwənt/ (adjective) fluent or persuasive in speaking or writing.\n\tclearly expressing or indicating something.",
+            "ut·ter /ˈədər/ (adjective) complete; absolute.",
+        ]
+
 want_fire = False
 want_prompt = False
 want_money = False
+
+emoji_menu = False
+wpm = False
+
+freeze = False
+password = False
+have_store = False
+storage = ""
+
+coins = 0
 words_written_on_run = 0
 signed_in = False
 person_ind = int()
 users = []
 
-with open("personal/drabble_folder/streak.csv", "r") as file:
+with open("personal/drabble_folder/drabble_users.csv", "r") as file:
     reader = csv.reader(file)
     for row_index, row in enumerate(reader):
         if row_index == 0:
@@ -44,11 +55,13 @@ with open("personal/drabble_folder/streak.csv", "r") as file:
             continue
         dict = {}
         for detail_index, detail in enumerate(row):
+            if detail_index == 5:
+                eval(detail)
             dict.update({detail_types[detail_index]:detail})
         users.append(dict)
 
 def file_write(): # Writes the list of dictonary profiles onto the file
-    with open ("personal/drabble_folder/streak.csv", "w", newline="") as file:
+    with open ("personal/drabble_folder/drabble_users.csv", "w", newline="") as file:
         fieldnames = ["Name","Streak","Day","Coins","Gems"]
         writer = csv.DictWriter(file, fieldnames=fieldnames)
         writer.writeheader()
@@ -121,7 +134,7 @@ Settings
             want_money = not want_money
 
 def sign_in(username):
-    global person_ind
+    global person_ind, wpm, freeze, password, have_storage, storage
     found = False
     while not found:
         if username == "0":
@@ -130,7 +143,13 @@ def sign_in(username):
             if username == user["Name"]:
                 found = True
                 person_ind = user_ind
-                print(f"Welcome {users[person_ind]["Name"]}!")
+                coins = int(users[person_ind]["Coins"])
+                freeze = users[person_ind]["Bought"]["Freeze"]
+                password = users[person_ind]["Bought"]["Password"]
+                have_storage = password = users[person_ind]["Bought"]["Store"]
+                if have_storage == True:
+                    storage = users[person_ind]["Storage"]
+                print(f"\tWelcome, {users[person_ind]["Name"]}!")
                 return True
         if found == False:
             print("Couldn't Find That User")
@@ -138,26 +157,48 @@ def sign_in(username):
 
 def sign_up(): #CATCH DUPLICATES!!!
     new_name = input("Username For New User: ")
-    users.append({"Name":new_name, "Streak":0, "Day":0, "Coins":0, "Gems":0})
+    users.append({"Name":new_name,
+                  "Streak":0,
+                  "Day":0,
+                  "Coins":0,
+                  "Gems":0,
+                  "Bought": {"Emoji Kitchen":False,"WPM":False,"Freeze":False,"Password":False,"Store":False},
+                  "Storage": ''
+                  })
     sign_in(new_name)
     file_write()
 
-def shop(emoji_menu):
+def shop():
+    global coins, emoji_menu, wpm, freeze, password, have_store
     while True:
-        print(f"{users[person_ind]["Coins"]}🟡 {users[person_ind]["Gems"]}💎")
-        order = int_input(f"""Shop [Exit(0)]:
-    Emoji Menu(1)- 5🟡
-""",1, zero = True)
-        if order == 0:
-            print("Thanks for Shopping!")
+        shop_type = int_input(f"[Exit(0)] {users[person_ind]["Coins"]}🟡(1) {users[person_ind]["Gems"]}💎(2)", 2, zero = True)
+        if shop_type == 0:
             break
-        elif order == 1:
-            users[person_ind]["Coins"] = str(int(users[person_ind]["Coins"]) -5)
-            emoji_menu = True
-    return emoji_menu
+        if shop_type == 2 and signed_in == False:
+            print("You Are Not Signed In")
+            continue
+        while True:
+            order = int_input(f"""Shop [Exit(0)]:
+        {f"Emoji Menu(1)- {'5🟡' if shop_type == 1 else '5💎'}" if emoji_menu == False else''}
+        {f"WMP Write(2)- {'20🟡' if shop_type == 1 else '20💎'}" if emoji_menu == False else''}
+    """,1, zero = True)
+            if order == 0:
+                print("Thanks for Shopping!")
+                break
+            elif order == 1:
+                if shop_type == 1:
+                    emoji_menu = True
+                    coins += -5
+                    users[person_ind]["Coins"] = str(int(users[person_ind]["Coins"]) -5)
+                elif shop_type == 2:
+                    users[person_ind]["Bought"]["Emoji Menu"] = True
+                    users[person_ind]["Gems"] = str(int(users[person_ind]["Gems"]) -5)
+            elif order == 2:
+                pass
+            if signed_in == True:
+                file_write()
 
 def main(): # Introduces the program and then lets the user choose one of the options
-    emoji_menu = False
     global signed_in
     print("\nWelcome to Drabble, where you can write every day to grow your streak.")
     while True:
@@ -189,7 +230,7 @@ def main(): # Introduces the program and then lets the user choose one of the op
                 signed_in = False
         elif choice == 9:
             if want_money == True:
-                emoji_menu = shop(emoji_menu)
+                shop()
             else:
                 print("Not In Range")
         elif choice == 0:
@@ -197,4 +238,9 @@ def main(): # Introduces the program and then lets the user choose one of the op
             break
 main()
 
-#Add Money, WPM, Shop, Fix Creation of Accounts, More Prompts and Words, Save stuff, Losing Streak
+#Add Money (Challenges), WPM, Fix and Add to Shop, Fix Creation of Accounts, Save stuff, Losing Streak, More Prompts and Words, 
+
+'''
+Bought
+["Emoji Menu", "WPM", "Freeze", "Password", "Storage"]
+'''
