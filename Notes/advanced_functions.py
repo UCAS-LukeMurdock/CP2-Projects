@@ -86,6 +86,7 @@ groc = user_inputs("gorceries")
 tansport = user_inputs("transportation")
 
 start = math()
+start(rent, "rent")
 
 # 7. Why do we write closure functions?
     # We use closure functions because it saves information across multiple calls
