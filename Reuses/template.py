@@ -6,7 +6,7 @@ def int_input(prompt, range = 0): # Checks and solves errors in integer inputs (
     while True:
         try: 
             response = int(input(prompt).strip())
-        except ValueError:
+        except:
             print("Invalid Input Type")
             continue
         if range == 0 or (response > 0 and response <= range):
