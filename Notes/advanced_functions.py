@@ -9,7 +9,7 @@ def is_int(user_input):
         # 8. What is recursion?
             # When you call a function inside of itself
         # 9. How does recursion work?
-            # 
+            # Recursion starts a new version of the function inside the old version of the function.
         print("Please give me a number")
         user_input = is_int(input("How old are you?\n"))
     return int(user_input)

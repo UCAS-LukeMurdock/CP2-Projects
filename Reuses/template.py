@@ -1,38 +1,24 @@
-#Luke Murdock, 
+# Luke Murdock, 
 import csv
 
-
-def int_input(prompt, range = 0): # Checks and solves errors in integer inputs (Has Range If Needed)
-    while True:
-        try: 
-            response = int(input(prompt).strip())
-        except:
-            print("Invalid Input Type")
-            continue
-        if range == 0 or (response > 0 and response <= range):
-            break
-        else:
-            print("Not In Range")
-            continue
+def intput(prompt, min = 0, max = 0): # Checks and prompts user to solve errors in integer inputs (Has Range If Needed)
+    try:
+        response = int(input(prompt).strip())
+    except:
+        print("Not An Integer")
+        response = intput(prompt,min,max)
+    if (min != 0 and max != 0) and (response < min or response > max):
+        print(f"Not In Range: {min}-{max}")
+        response = intput(prompt,min,max)
     return response
+age = intput("What is your age?\n")
 
-def display(): # Prints all of 
-    print("\n:\n")
-    # for in :
-        #print(f"- {}\n- {}\n- {}\n- {}\n")
-
-def func2(): # 
-    print("")
-
-def func3(): # 
-    print("")
-
-def main(): # Introduces the program and then lets the user choose one of the options
+def menu(): # Introduces the program and then lets the user choose one of the options
     print("Welcome, where you can see, add, remove, or search through it.")
     while True:
-        choice = int_input("\nDisplay(1) Search(2) Add(3) Remove(4) Edit(5) Exit(6)\n", 6)
+        choice = intput("\nDisplay(1) Search(2) Add(3) Remove(4) Edit(5) Exit(6)\n", 6)
         if choice == 1:
-            display()
+            ()
         elif choice == 2:
             ()
         elif choice == 3:
@@ -47,5 +33,4 @@ def main(): # Introduces the program and then lets the user choose one of the op
         else:
             print("Something Broke")
             continue
-
-main()
+menu()

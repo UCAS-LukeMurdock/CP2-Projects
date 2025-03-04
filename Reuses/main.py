@@ -1,13 +1,25 @@
 #  Reuses
 
-def int_input(prompt, range = 0, zero = False): # Checks and solves errors in integer inputs (Has Range If Needed)
+def intput(prompt, min = 0, max = 0): # Checks and prompts user to solve errors in integer inputs (Has Range If Needed)
+    try:
+        response = int(input(prompt).strip())
+    except:
+        print("Not An Integer")
+        response = intput(prompt,min,max)
+    if (min != 0 and max != 0) and (response < min or response > max):
+        print(f"Not In Range: {min}-{max}")
+        response = intput(prompt,min,max)
+    return response
+age = intput("What is your age?\n")
+    
+def int_input(prompt, max = 0, min = 0, need_range = True): # Checks and solves errors in integer inputs (Has Range If Needed)
     while True:
         try: 
             response = int(input(prompt).strip())
-        except ValueError:
-            print("Invalid Input Type")
+        except:
+            print("Not An Integer")
             continue
-        if range == 0 or (response > 0 and response <= range and zero == False) or (zero == True and range >= 0 and response <= range):
+        if need_range == True and response < min and response > max:
             break
         else:
             print("Not In Range")
@@ -59,8 +71,6 @@ def float_input(text): # Only takes in floats
         return output
 def cs(): # Clear Screen
     print("\033c",end="")
-
-choice = int_input()
 
 '''
 tasks = []
