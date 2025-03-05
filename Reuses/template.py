@@ -16,7 +16,7 @@ age = intput("What is your age?\n")
 def menu(): # Introduces the program and then lets the user choose one of the options
     print("Welcome, where you can see, add, remove, or search through it.")
     while True:
-        choice = intput("\nDisplay(1) Search(2) Add(3) Remove(4) Edit(5) Exit(6)\n", 6)
+        choice = intput("\nDisplay(1) Search(2) Add(3) Remove(4) Edit(5) Exit(6)\n", 1,6)
         if choice == 1:
             ()
         elif choice == 2:
