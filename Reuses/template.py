@@ -11,7 +11,6 @@ def intput(prompt, min = 0, max = 0): # Checks and prompts user to solve errors 
         print(f"Not In Range: {min}-{max}")
         response = intput(prompt,min,max)
     return response
-age = intput("What is your age?\n")
 
 def menu(): # Introduces the program and then lets the user choose one of the options
     print("Welcome, where you can see, add, remove, or search through it.")
