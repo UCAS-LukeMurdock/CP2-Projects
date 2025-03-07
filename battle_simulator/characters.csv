@@ -1,6 +1,1 @@
-Name,Level,Health,Strength,Defense,Speed,Class
-Joe,0,4,4,4,4,Human
-Luke,0,6,2,3,5,Mage
-David,0,3,6,4,3,Knight
-Billy,0,3,5,3,5,Scout
-Bob,0,5,4,6,1,Bodyguard
+Name,Class,Level,Health,Strength,Defense,Speed
