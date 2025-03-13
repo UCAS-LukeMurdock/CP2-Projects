@@ -54,15 +54,26 @@ def create():
         "Defense": defen,
         "Speed": speed}
     charac = class_stats(user_class, charac)
-    print("Applied Class Stat Changes")
+    print("Applied Class Stat Changes\n")
+    print(f"Character Created\n{charac["Name"]}:\nClass- {charac["Class"]}\nLevel- {charac["Level"]}\nHealth Stat- {charac["Health"]}\nStrength Stat- {charac["Strength"]}\nDefense Stat- {charac["Defense"]}\nSpeed Stat- {charac["Speed"]}")
     characs = read_file()
-    characs = characs.append(charac)
+    characs.append(charac)
     write_file(characs)
 
 def display():
+    characs = read_file()
     print("\nYour Characters")
-    for charac in read_file():
+    if characs == []:
+        print("\nNone")
+        return
+    for charac in characs:
         print(f"\n{charac["Name"]}:\nClass- {charac["Class"]}\nLevel- {charac["Level"]}\nHealth Stat- {charac["Health"]}\nStrength Stat- {charac["Strength"]}\nDefense Stat- {charac["Defense"]}\nSpeed Stat- {charac["Speed"]}")
 
 def remove():
-    pass
+    characs = read_file()
+    name = input("What is the name of the character you want removed?:\n")
+    for charac in characs:
+        if name == charac["Name"]:
+            characs.remove(charac)
+    write_file(characs)
+    print("Successfully Removed")

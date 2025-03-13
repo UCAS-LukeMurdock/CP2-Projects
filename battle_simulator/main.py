@@ -37,7 +37,7 @@ Test your program thoroughly to ensure all features work as expected
 '''
 from file_handler import intput
 from character_handler import create, display, remove
-from battle_file import who
+from battle_file import battle
 
 def menu(): # Introduces the program and then lets the user choose one of the options
     print("Welcome to this Battle Simulator, where you can create, see, remove, or fight RPG characters.")
@@ -50,7 +50,7 @@ def menu(): # Introduces the program and then lets the user choose one of the op
         elif choice == 3:
             remove()
         elif choice == 4:
-            who()
+            battle()
         elif choice == 5:
             ()
         elif choice == 6:
