@@ -11,13 +11,15 @@ def read_file(): # Turns a file into a list of dictionary characters
                 continue
             dict = {}
             for detail_index, detail in enumerate(row):
+                if detail_index == 2 or detail_index == 3 or detail_index == 4 or detail_index == 5 or detail_index == 6 or detail_index == 7:
+                    detail = int(detail)
                 dict.update({detail_types[detail_index]:detail})
             characs.append(dict)
     return characs
 
 def write_file(characs): # Writes the list of dictonary onto the file
     with open ("battle_simulator/characters.csv", "w", newline="") as file:
-        fieldnames = ["Name","Class","Level","Health","Strength","Defense","Speed"]
+        fieldnames = ["Name","Class","Level","Health","Strength","Defense","Speed","Money","Potion","Sword","Equipped"]
         writer = csv.DictWriter(file, fieldnames=fieldnames)
         writer.writeheader()
         writer.writerows(characs)
