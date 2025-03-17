@@ -1,4 +1,8 @@
 Name,Class,Level,Health,Strength,Defense,Speed,Money,Potion,Sword,Equipped
 Mommeo,Mage,0,5,4,7,3,100,Protect,no,no
 Luke,Mage,2,8,3,4,6,102,Poison,no,no
-The Knight,Knight,6,8,5,6,6,1002,Frozen,yes,yes
+The Knight,Knight,21,10,10,10,10,1027,none,yes,yes
+Jerry Bean's Man,Knight,3,5,12,1,4,4,Freeze,no,no
+ez,Ranger,2,4,6,3,8,2,Freeze,no,no
+lukie,Basic Human,0,2,7,7,4,0,none,no,no
+juan,Ranger,0,4,7,1,7,0,none,no,no

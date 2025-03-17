@@ -1,10 +1,10 @@
 #Luke Murdock, Shop
 from file_handler import read_file, write_file, intput
 
-def shop():
+def shop(): #Lets the user choose which character they want to shop for and then lets them buy one of the potions or the sharp sword if they have enough money and don't already have it.
     characs = read_file()
     ind = -1
-    charac_name = input("What is the name of the character you want to shop as?:\n").strip()
+    charac_name = input("Who do you want to shop as?:\n").strip()
     for charac_ind, charac in enumerate(characs):
         if charac_name.upper() == charac["Name"].upper():
             ind = charac_ind
@@ -13,7 +13,7 @@ def shop():
         return
     item = intput("$5 Poison(1) $5 Freeze(2) $7 Protection(3) $10 Sharp Sword(4) Exit(5)\n", 1,5)
 
-    def cost_check(cost):
+    def cost_check(cost): # Checks if the character has enough money
         nonlocal characs, ind
         if characs[ind]["Money"] < cost:
             print(f"{characs[ind]["Name"]} doesn't have enough Money")
@@ -37,7 +37,7 @@ def shop():
                 return
             characs[ind]['Potion'] = 'Protect'
             characs[ind]['Money'] += -7
-    if item == 4:
+    elif item == 4:
         if characs[ind]["Sword"] == "yes":
             print(f"{characs[ind]["Name"]} already has the Sharp Sword")
             return
@@ -48,9 +48,10 @@ def shop():
             characs[ind]['Money'] += -10
     else:
         return
+    print("Successfully Bought")
     write_file(characs)
 
-def equip():
+def equip(): # Lets the user equip either the basic sword or the sharp sword
     characs = read_file()
     ind = -1
     charac_name = input("What is the name of the character you want to equip as?:\n").strip()
