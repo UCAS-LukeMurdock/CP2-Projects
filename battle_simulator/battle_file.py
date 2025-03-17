@@ -55,18 +55,18 @@ def battle(): # Sets up and starts the battle and then lets the characters choos
 
         def turn(attacker, attacker_action, defender, defender_action, defender_hp): # Carries out the specified action for either the user's or machine's turn
             attack, poison, frozen, protect = False,False,False,False
-            if defender_action == 2 and random.randint(1,10-defender["Speed"]) == 1:
+            if defender_action == 2 and random.randint(1,10-defender["Speed"]) == 1: # Dodging
                 print(f"{defender["Name"]} Dodged!")
-            elif defender_action != 2 and attacker_action == 1:
+            elif defender_action != 2 and attacker_action == 1: # Finding Attack Damage
                 if attacker_action == 1 and defender_action != 2:
                     attack = attacker["Strength"] - defender["Defense"]//6
                 elif attacker_action == 1 and defender_action == 2:
                     attack = attacker["Strength"] - defender["Defense"]//3 *2
                 print(f"{attacker["Name"]} Hit {defender["Name"]}{f' But {defender["Name"]} was in a Defense Stance' if defender_action == 2 else ''}!")
-            if defender_action == 4:
+            if defender_action == 4: #Healing
                 defender_hp += defender["Health"]//4
                 print(f"{defender["Name"]} Successfully Healed!")
-            if attacker_action == 5:
+            if attacker_action == 5: # Using a Class Power
                 if attacker["Class"] == "Basic Human":
                     print(f"{attacker["Name"]} Can't Use a Class Power since they are a Basic Human")
                 elif attacker["Class"] == "Knight":
@@ -84,7 +84,7 @@ def battle(): # Sets up and starts the battle and then lets the characters choos
                         print(f"{attacker["Name"]} Blasted {defender["Name"]}!")
                     else:
                         print(f"{attacker["Name"]} used Blast but {defender["Name"]} Dodged!")
-            elif attacker_action == 6:
+            elif attacker_action == 6: # Using a Potion
                 if attacker["Potion"] == "none":
                     print(f"{attacker["Name"]} doesn't have any Potions")
                 else:
@@ -97,7 +97,7 @@ def battle(): # Sets up and starts the battle and then lets the characters choos
                     elif attacker["Potion"] == "Protect":
                         print(f"{attacker["Name"]} used Protection!")
                         protect = True
-            if attack is not False and attack >= 0:
+            if attack is not False and attack >= 0: # Dealing Damage
                 if attacker_action == 5 and attacker["Class"] == "Ranger":
                     defender_hp -= attack
                 else:
@@ -178,36 +178,3 @@ def battle(): # Sets up and starts the battle and then lets the characters choos
         characs[fighter_ind]["Level"] += 1
         characs = level_up(characs, fighter_ind)
     write_file(characs)
-
-# def condition(is_user, active, inactive, inactive_hp, inactive_hp, active_action, inactive_action, active_poison, inactive_): # Carrying Out Status Conditions and Turns
-#             nonlocal user_action, user_hp, op_action, op_hp, user_poison, user_poison_count, user_frozen, user_frozen_count, user_protect, user_protect_count, user_protected_hp, gave_up, op_poison, op_poison_count, op_frozen, op_frozen_count, op_protect, op_protect_count, op_protected_hp
-
-#             if inactive_frozen_count < 2:
-#                 print(f"{active["Name"]} is still Frozen{' but Melting' if inactive_frozen_count == 1 else ''}!")
-#                 inactive_frozen_count += 1
-#             else:
-#                 user_hp, op_poison, op_frozen, op_protect = turn(active, active_action, inactive, inactive_action, inactive_hp)
-#                 if op_poison == True:
-#                     op_poison_count = 0
-#                     opponent["Potion"] = 'none'
-#                 elif op_frozen == True:
-#                     op_frozen_count = 0
-#                     opponent["Potion"] = 'none'
-#                 elif op_protect == True:
-#                     op_protect_count = 0
-#                     op_protected_hp = op_hp
-#                     opponent["Potion"] = 'none'
-#                 if user_poison_count < 4:
-#                     print(f"{opponent["Name"]} felt the poison!")
-#                     op_hp -= 3
-#                     user_poison_count += 1
-#                     if user_poison_count == 4:
-#                         print(f"{opponent["Name"]} has finally recovered from the poison!")
-#                 if user_protect_count < 3:
-#                     print(f"All damage {fighter["Name"]} recieved was negated because they were protected")
-#                     user_hp = user_protected_hp
-#                     user_protect_count += 1
-#             return active, inactive
-        
-#         opponent, fighter = condition(opponent,fighter,False)
-#         fighter, opponent = condition(fighter,opponent,True)
