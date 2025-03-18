@@ -1,4 +1,4 @@
-# Luke Murdock, Battle Simulator
+# Luke Murdock, Updated Battle Simulator
 
 from file_handler import intput
 from character_handler import create, display, remove
