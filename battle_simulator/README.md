@@ -3,6 +3,7 @@
 ## Project Description
 ---
 Paragraph describing the purpose of your project and what it does.  
+This program's purpose is to let the user have fun battling or doing other things as RPG characters they create. 
 
 ## Installation
 ---
@@ -24,9 +25,9 @@ Paragraph describing how to user the project
 
 ## Current Features
 ---
-+ First feature I am proud of
-+ Second feature I am proud of
-+ Third feature I am proud of  
++ This program lets the user pick different classes that each give a character different stat changes and a special ability particular to that class in battle.
++ This program also lets the user get random character ideas to help them start brainstorming.
++ Additionally, this program has actual visuals for some things, including character stats.
 
 ## Contributions
 ---
@@ -40,9 +41,7 @@ Not used for this class
 
 ## Author's Information
 ---
-Short paragraph about you (Each member of the group)
-The author of this project is Luke Murdock and He is a student at UCAS, currently taking a programming class and creating projects like this one to help him learn python and the basic of programming. 
-  
+The author of this project is Luke Murdock and he is a student at UCAS, currently taking a programming class and creating projects like this one to help him learn python and the basics of programming. He mostly enjoys coding, expecially when it doesn't have many bugs and has a fun end product. He enjoys lots of other things including reading and playing games, including video games. He thinks it would be fun to eventually make some sort of actual game in the future if he ever gets the oppurtunity.  
 
 ## Change Log
 ---
