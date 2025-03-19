@@ -2,8 +2,7 @@
 
 ## Project Description
 ---
-Paragraph describing the purpose of your project and what it does.  
-This program's purpose is to let the user have fun battling or doing other things as RPG characters they create. 
+This program's purpose is to let the user have fun battling or doing other things as RPG characters they create. The options that the user is given for their characters and the program are create, display, stat visual, data analysis, remove, battle, shop, equip, and exit. Each character has a name, class, level, items and stats. When creating and setting this information, you can get a randomly generated character description for inspiration. Using the display option lets the user see all of the info for the characters that have been created. The visuals option shows a characters stats in a separate window witha graph. You can also get a data analysis of the character, fight and shop as a character, or equip a weapon you get from the shop. Battles are between two of the created characters and is central to the idea of this project.  
 
 ## Installation
 ---
