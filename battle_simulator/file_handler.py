@@ -34,3 +34,11 @@ def intput(prompt, min = -1, max = -1): # Checks and prompts user to solve error
         print(f"Not In Range: {min}-{max}")
         response = intput(prompt,min,max)
     return response
+
+def find(prompt, characs): # Finds the index of the desired character so then it can be used to access the character later
+    ind = -1
+    charac_name = input(prompt).strip()
+    for charac_ind, charac in enumerate(characs):
+        if charac_name.upper() == charac["Name"].upper():
+            ind = charac_ind
+    return charac_name, ind

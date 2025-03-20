@@ -1,5 +1,5 @@
 # Luke Murdock, Managing Battles
-from file_handler import read_file, write_file, intput
+from file_handler import read_file, write_file, intput, find
 import random
 
 def level_up(characs, ind): # Lets the user choose which stat to improve when leveling up
@@ -16,17 +16,12 @@ def level_up(characs, ind): # Lets the user choose which stat to improve when le
 
 def who(): # Lets the user choose who they want to be and and who they want to fight
     characs = read_file()
-    fighter, opponent = {}, {}
-    fighter_name = input("Who do you want to fight as? [Exit(0)]:\n").strip()
+    fighter_name, fighter_ind = find("Who do you want to fight as? [Exit(0)]:\n", characs)
     if fighter_name == "0":
         return False, False, False
-    opponent_name = input("Who do you want to fight against?:\n").strip()
-    for charac_ind, charac in enumerate(characs):
-        if fighter_name.upper() == charac["Name"].upper():
-            fighter, fighter_ind = charac, charac_ind
-        if opponent_name.upper() == charac["Name"].upper():
-            opponent = charac
-    if fighter == {} or opponent == {}:
+    opponent_name, opponent_ind = find("Who do you want to fight against?:\n", characs)
+    fighter, opponent = characs[fighter_ind], characs[opponent_ind]
+    if fighter_ind == -1 or opponent_ind == -1:
         print("\nAt Least One of Those Characters Can't Be Found")
         fighter, fighter_ind, opponent = who()
     return fighter, fighter_ind, opponent

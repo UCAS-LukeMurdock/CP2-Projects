@@ -18,7 +18,7 @@ Enhanced User Interface:
     Create a menu system that allows users to access new visualization and analysis features
 Documentation Reading:
     Demonstrate understanding of library documentation by implementing at least one additional feature from each library not explicitly required above
-Additional Features (Optional): (NOTE: only awarded IF all 20 points are earned, they cannot make up for lost points)
+Additional Features (Optional): (Note: only awarded IF all 20 points are earned, they cannot make up for lost points)
     Dynamic Battle Simulation and Analysis
     Use the Matplotlib animation module to create a dynamic visualization of a battle between two characters. Display health bars, damage dealt, and critical hits in real-time. After the battle, use Pandas to analyze the battle data, such as the number of turns, average damage per turn, and the most effective attacks. Present this analysis in a clear, graphical format using Matplotlib.
         Implement a dynamic battle visualization using Matplotlib animations (3 points)
@@ -40,27 +40,34 @@ from file_handler import intput
 from character_handler import create, display, remove
 from battle_file import battle
 from store import shop, equip
+from library_use import visual, analysis
 
 def menu(): # Introduces the program and then lets the user choose one of the options
     print("\n\nWelcome to this Battle Simulator, where you can create, see, remove, shop for, or fight RPG characters.")
     while True:
-        choice = intput("\nCreate(1) Display(2) Remove(3) Fight(4) Shop(5) Equip Sword(6) Exit(7)\n", 1,7)
+        choice = intput("\nCreate(1) Display(2) Stat Visuals(3) Data Analysis(4) Remove(5) Fight(6) Shop(7) Equip Sword(8) Exit(9)\n", 1,9)
         if choice == 1:
             create()
         elif choice == 2:
             display()
         elif choice == 3:
-            remove()
+            visual()
         elif choice == 4:
-            battle()
+            analysis()
         elif choice == 5:
-            shop()
+            remove()
         elif choice == 6:
-            equip()
+            battle()
         elif choice == 7:
+            shop()
+        elif choice == 8:
+            equip()
+        elif choice == 9:
             print("Come Back Soon!")
             break
         else:
             print("Something Broke")
             continue
 menu()
+
+# Backstory and All characters visual

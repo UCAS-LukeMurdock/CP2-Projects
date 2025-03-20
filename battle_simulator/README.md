@@ -15,12 +15,14 @@ Paragraph describing how to user the project
 
 ## Used Technologies
 ---
-+ First library in the repository
-`pip install code for the library`
-+ Second library in the repository
-`pip install code for the library`
-+ Third library in the repository
-`pip install code for the library`  
++ Matplotlib
+`pip install matplotlib`
++ Numpy
+`pip install numpy`
++ Pandas
+`pip install pandas`
++ Faker
+`pip install Faker`  
 
 ## Current Features
 ---
@@ -34,7 +36,7 @@ Not used for this class
 
 ## Contributors
 ---
-+ Person who helped - what they did
++ Internet and Documentations - Taught how to use the libraries in the ways needed
 + Person who helped - what they did
 + Person who helped - what they did  
 

@@ -1,13 +1,9 @@
 #Luke Murdock, Shop
-from file_handler import read_file, write_file, intput
+from file_handler import read_file, write_file, intput, find
 
 def shop(): #Lets the user choose which character they want to shop for and then lets them buy one of the potions or the sharp sword if they have enough money and don't already have it.
     characs = read_file()
-    ind = -1
-    charac_name = input("Who do you want to shop as?:\n").strip()
-    for charac_ind, charac in enumerate(characs):
-        if charac_name.upper() == charac["Name"].upper():
-            ind = charac_ind
+    charac_name, ind = find("Who do you want to shop as?:\n", characs)
     if ind == -1:
         print(f"\n{charac_name} Can't Be Found")
         return
@@ -53,11 +49,7 @@ def shop(): #Lets the user choose which character they want to shop for and then
 
 def equip(): # Lets the user equip either the basic sword or the sharp sword
     characs = read_file()
-    ind = -1
-    charac_name = input("What is the name of the character you want to equip as?:\n").strip()
-    for charac_ind, charac in enumerate(characs):
-        if charac_name.upper() == charac["Name"].upper():
-            ind = charac_ind
+    charac_name, ind = find("What is the name of the character you want to equip as?:\n", characs)
     if ind == -1:
         print(f"\n{charac_name} Can't Be Found")
         return

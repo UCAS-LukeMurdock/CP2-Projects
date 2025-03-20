@@ -1,5 +1,6 @@
 # Luke Murdock, Character Handler
-from file_handler import read_file, write_file, intput
+from file_handler import read_file, write_file, intput, find
+from library_use import fake_character
 
 def class_stats(user_class, charac): # Applies Stat Changes depending on Class
     if user_class == 1:
@@ -28,9 +29,11 @@ def class_stats(user_class, charac): # Applies Stat Changes depending on Class
 
 def create(): # Lets the user choose a name, class, and stats for a new character
     points_left = 16
-    name = input("\nCharacter's Name [Exit(0)]: ").strip()
+    name = input("\nCharacter's Name [Exit(0) Character Idea(1)]: \n").strip()
     if name == "0":
         return
+    elif name == "1":
+        fake_character()
     user_class = intput("\nCharacter's Class (Classes Affect Stats and Powers):\nBasic Human(1) Knight(2) Ranger(3) Mage(4)\n", 1,4)
     print("\nYour character has four stats: Health, Strength, Defense, Speed\nThey are given 16 points overall and you decide how many points are allocated to each stat")
     
@@ -78,13 +81,11 @@ def display(): # Displays all of the info for all of the characters
 
 def remove(): # Removes a specifed character by inputted name
     characs = read_file()
-    name = input("What is the name of the character you want removed?:\n").strip()
-    removed = False
-    for charac in characs:
-        if name.upper() == charac["Name"].upper():
-            characs.remove(charac)
-            removed = True
-            print("Successfully Removed")
-            write_file(characs)
-            return
-    print("Unsuccessfully Removed")
+    charac_name, ind = find("What is the name of the character you want removed?:\n", characs)
+    if ind == -1:
+        print(f"\nUnsuccessfully Removed\n{charac_name} Can't Be Found")
+        return
+    else:
+        characs.pop(ind)
+        print(f"\n{charac_name} Successfully Removed")
+        write_file(characs)
