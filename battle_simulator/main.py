@@ -70,4 +70,4 @@ def menu(): # Introduces the program and then lets the user choose one of the op
             continue
 menu()
 
-# Backstory and All characters visual
+# Fake Character and All characters visual

@@ -17,7 +17,8 @@ def visual(): # Shows a visual bar graph of a desired character's stats in a new
     width = 0.6
     fig, ax = plt.subplots()
     bottom = np.zeros(4)
-    for stat, stat_count in stat_counts:
+    stat = "Stat"
+    for stat_count in stat_counts:
         p = ax.bar(stats, stat_count, width, label=stat, bottom=bottom)
         bottom += stat_count
         ax.bar_label(p, label_type='center')
@@ -45,7 +46,8 @@ def characs_visual_analysis(): # Shows a bargraph of all of the characters' aver
 
 def fake_character(): # Displays a fake character with a name, backstory, hometown, and birthdate
     fake = Faker()
-    print(f"\nName: {fake.name()}\nBackstory: {fake.text()}\nHometown: {fake.local_latlng()[4].split("/")[1]}\nBirthdate: {fake.date_of_birth()}")
+    name = fake.name()
+    print(f"\nName: {name}\nBackstory: {name} was born on {fake.date_of_birth()} in {fake.local_latlng()[4].split("/")[1]} on {fake.street_name()} Street which is located in {fake.country()}. They speak the language of {fake.language_name()}. Their job is a {fake.job()} where they use the {fake.currency_name()}. They own an anient, magical artifact that would normally cost {fake.pricetag()}.")
     retry = intput(f"\nRegenerate(1) Continue(2)\n", 1,2)
     if retry == 1:
         fake_character()
