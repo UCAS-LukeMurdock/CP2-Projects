@@ -2,7 +2,7 @@
 
 ## Project Description
 ---
-This program's purpose is to let the user have fun battling or doing other things as RPG characters they create. The options that the user is given for their characters and the program are create, display, stat visual, data analysis, remove, battle, shop, equip, and exit. Each character has a name, class, level, items and stats. When creating and setting this information, you can get a randomly generated character description for inspiration. Using the display option lets the user see all of the info for the characters that have been created. The visuals option shows a characters stats in a separate window witha graph. You can also get a data analysis of the character, fight and shop as a character, or equip a weapon you get from the shop. Battles are between two of the created characters and is central to the idea of this project.  
+This program's purpose is to let the user have fun battling or doing other things as RPG characters they create. The options that the user is given for their characters and the program are create, display, stat visual, data analysis, remove, character comparison, fight, shop, equip, and exit. Each character has a name, class, level, items and stats. When creating and setting this information, you can get a randomly generated character description for inspiration. You can also generate a character. Using the display option lets the user see all of the info for the characters that have been created. The visuals option shows a characters stats in a separate window witha graph. You can also get a data analysis of the character's stats, remove a character, compare stats of the characters, fight and shop as a character, or equip a weapon you get from the shop. Battles are between two of the created characters and is central to the idea of this project.  
 
 ## Installation
 ---
@@ -10,8 +10,8 @@ Not used for this class
 
 ## Execution and Usage
 ---
-Paragraph describing how to user the project
-![image](relative path to the image NOTE: Image has to be saved in the repoitory REMINDER: Show what the project looks like when running)  
+To use this program you have to install the correct libraries and the run the code. Menus will have you insert numbers that correspond with an action such as Create(1) Remove(2) or Exit(3). The first thing you need to do for the program is create characters and then either fight with them to level up or earn money. Then, you should do other things with your characters like shopping or checking their information. Then you can keep on doing these things as many times as you would like and you could even let other poeple make characters so then you can fight not just your own characters.
+![image](battle_simulator/image.png)
 
 ## Used Technologies
 ---
@@ -36,9 +36,7 @@ Not used for this class
 
 ## Contributors
 ---
-+ Internet and Documentations - Taught how to use the libraries in the ways needed
-+ Person who helped - what they did
-+ Person who helped - what they did  
++ Internet and Documentations - Taught how to use the libraries in the ways needed 
 
 ## Author's Information
 ---

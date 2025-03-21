@@ -10,8 +10,8 @@ Not used for this class
 
 ## Execution and Usage
 ---
-Paragraph describing how to user the project
-![image](relative path to the image NOTE: Image has to be saved in the repoitory REMINDER: Show what the project looks like when running)  
+Paragraph describing how to use the project
+![image](relative path to the image NOTE: Image has to be saved in the repository REMINDER: Show what the project looks like when running)  
 
 ## Used Technologies
 ---

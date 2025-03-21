@@ -75,7 +75,7 @@ species = ('Health', 'Strength', 'Defense', 'Speed')
 sex_counts = {
     'Stat': np.array([characs[ind]["Health"], characs[ind]["Strength"], characs[ind]["Defense"], characs[ind]["Speed"]])
 }
-width = 0.6  # the width of the bars: can also be len(x) sequence
+width = 0.4  # the width of the bars: can also be len(x) sequence
 fig, ax = plt.subplots()
 bottom = np.zeros(4)
 for sex, sex_count in sex_counts.items():

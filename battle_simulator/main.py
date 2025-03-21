@@ -40,12 +40,12 @@ from file_handler import intput
 from character_handler import create, display, remove
 from battle_file import battle
 from store import shop, equip
-from library_use import visual, analysis
+from library_use import visual, analysis, characs_visual_analysis
 
 def menu(): # Introduces the program and then lets the user choose one of the options
     print("\n\nWelcome to this Battle Simulator, where you can create, see, remove, shop for, or fight RPG characters.")
     while True:
-        choice = intput("\nCreate(1) Display(2) Stat Visuals(3) Data Analysis(4) Remove(5) Fight(6) Shop(7) Equip Sword(8) Exit(9)\n", 1,9)
+        choice = intput("\nCreate(1) Display(2) Stat Visuals(3) Data Analysis(4) Remove(5) Character Comparison(6) Fight(7) Shop(8) Equip Sword(9) Exit(10)\n", 1,10)
         if choice == 1:
             create()
         elif choice == 2:
@@ -57,17 +57,17 @@ def menu(): # Introduces the program and then lets the user choose one of the op
         elif choice == 5:
             remove()
         elif choice == 6:
-            battle()
+            characs_visual_analysis()
         elif choice == 7:
-            shop()
+            battle()
         elif choice == 8:
-            equip()
+            shop()
         elif choice == 9:
+            equip()
+        elif choice == 10:
             print("Come Back Soon!")
             break
         else:
             print("Something Broke")
             continue
 menu()
-
-# Fake Character and All characters visual
