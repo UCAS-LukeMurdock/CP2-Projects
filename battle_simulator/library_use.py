@@ -23,18 +23,6 @@ def visual(): # Shows a visual bar graph of a desired character's stats in a new
     ax.set_title("Character's Stats")
     ax.legend()
     plt.show()
-    # stats = ('Health', 'Strength', 'Defense', 'Speed')
-    # stat_counts = [characs[ind]["Health"], characs[ind]["Strength"], characs[ind]["Defense"], characs[ind]["Speed"]]
-    # width = 0.6
-    # fig, ax = plt.subplots()
-    # bottom = np.zeros(4)
-    # for stat, stat_count in stat_counts:
-    #     p = ax.bar(stats, stat_count, width, label=stat, bottom=bottom)
-    #     bottom += stat_count
-    #     ax.bar_label(p, label_type='center')
-    # ax.set_title("Character's Stats")
-    # ax.legend()
-    # plt.show()
 
 def analysis(): # Displays a data analysis, including the mean, median, and mode, for a desired character's stats
     characs = read_file()

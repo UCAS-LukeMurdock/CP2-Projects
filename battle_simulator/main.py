@@ -35,7 +35,6 @@ Additional Features (Optional): (Note: only awarded IF all 20 points are earned,
         Create a 2D map visualization of the generated world using Matplotlib (4 points)
         Implement a feature that allows players to explore the generated world (5 points)
 """
-
 from file_handler import intput
 from character_handler import create, display, remove
 from battle_file import battle
