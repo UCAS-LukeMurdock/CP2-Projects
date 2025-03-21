@@ -11,7 +11,8 @@ Not used for this class
 ## Execution and Usage
 ---
 To use this program you have to install the correct libraries and the run the code. Menus will have you insert numbers that correspond with an action such as Create(1) Remove(2) or Exit(3). The first thing you need to do for the program is create characters and then either fight with them to level up or earn money. Then, you should do other things with your characters like shopping or checking their information. Then you can keep on doing these things as many times as you would like and you could even let other poeple make characters so then you can fight not just your own characters.
-![image](image.png)
+
+![image](image.png)  
 
 ## Used Technologies
 ---
@@ -28,7 +29,7 @@ To use this program you have to install the correct libraries and the run the co
 ---
 + This program lets the user pick different classes that each give a character different stat changes and a special ability particular to that class in battle.
 + This program also lets the user get random character ideas to help them start brainstorming.
-+ Additionally, this program has actual visuals for some things, including character stats.
++ Additionally, this program has actual visuals for some things, including character stats.  
 
 ## Contributions
 ---
@@ -36,7 +37,7 @@ Not used for this class
 
 ## Contributors
 ---
-+ Internet and Documentations - Taught how to use the libraries in the ways needed 
++ Internet and Documentations - Taught how to use the libraries in the ways needed  
 
 ## Author's Information
 ---
