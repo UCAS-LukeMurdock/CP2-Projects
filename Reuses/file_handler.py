@@ -3,7 +3,7 @@ import csv
 
 def read_file(): # Turns a file into a list of dictionary characters
     characs = []
-    with open("battle_simulator/characters.csv", "r") as file:
+    with open("", "r") as file:
         reader = csv.reader(file)
         for row_index, row in enumerate(reader):
             if row_index == 0:
@@ -18,8 +18,8 @@ def read_file(): # Turns a file into a list of dictionary characters
     return characs
 
 def write_file(characs): # Writes the list of dictonary onto the file
-    with open ("battle_simulator/characters.csv", "w", newline="") as file:
-        fieldnames = ["Currency","Coins"]
+    with open ("", "w", newline="") as file:
+        fieldnames = ["",""]
         writer = csv.DictWriter(file, fieldnames=fieldnames)
         writer.writeheader()
         writer.writerows(characs)
