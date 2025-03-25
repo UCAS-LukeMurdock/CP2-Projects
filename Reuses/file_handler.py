@@ -2,7 +2,7 @@
 import csv
 
 def read_file(): # Turns a file into a list of dictionary characters
-    characs = []
+    dicts = []
     with open("", "r") as file:
         reader = csv.reader(file)
         for row_index, row in enumerate(reader):
@@ -14,15 +14,15 @@ def read_file(): # Turns a file into a list of dictionary characters
                 if detail_index == 1:
                     detail = eval(detail)
                 dict.update({detail_types[detail_index]:detail})
-            characs.append(dict)
-    return characs
+            dicts.append(dict)
+    return dicts
 
-def write_file(characs): # Writes the list of dictonary onto the file
+def write_file(dicts): # Writes the list of dictonary onto the file
     with open ("", "w", newline="") as file:
         fieldnames = ["",""]
         writer = csv.DictWriter(file, fieldnames=fieldnames)
         writer.writeheader()
-        writer.writerows(characs)
+        writer.writerows(dicts)
 
 def intput(prompt, min = -1, max = -1): # Checks and prompts user to solve errors in integer inputs (Has Range If Needed)
     try:
