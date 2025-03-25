@@ -1,12 +1,16 @@
 #  Reuses
 
-def intput(prompt, min = 0, max = 0): # Checks and prompts user to solve errors in integer inputs (Has Range If Needed)
+# else:
+#     print("Incorrect Input, Either Not an Integer or Out of Range, Try Again")
+        #Oops no looping
+
+def intput(prompt, min = -1, max = -1): # Checks and prompts user to solve errors in integer inputs (Has Range If Needed)
     try:
         response = int(input(prompt).strip())
     except:
         print("Not An Integer")
         response = intput(prompt,min,max)
-    if (min != 0 or max != 0) and (response < min or response > max): # If either min or max aren't 0 and the input is out of range then the user has to reinput
+    if (min != -1 or max != -1) and (response < min or response > max): # If either min or max aren't -1 and the input is out of range then the user has to reinput
         print(f"Not In Range: {min}-{max}")
         response = intput(prompt,min,max)
     return response

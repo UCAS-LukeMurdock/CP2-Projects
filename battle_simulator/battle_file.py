@@ -50,7 +50,7 @@ def battle(): # Sets up and starts the battle and then lets the characters choos
 
         def turn(attacker, attacker_action, defender, defender_action, defender_hp): # Carries out the specified action for either the user's or machine's turn
             attack, poison, frozen, protect = False,False,False,False
-            if defender_action == 2 and random.randint(1,10-defender["Speed"]) == 1: # Dodging
+            if defender_action == 2 and random.randint(0,abs(10-defender["Speed"])) == 1: # Dodging
                 print(f"{defender["Name"]} Dodged!")
             elif defender_action != 2 and attacker_action == 1: # Finding Attack Damage
                 if attacker_action == 1 and defender_action != 2:
