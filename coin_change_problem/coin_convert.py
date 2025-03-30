@@ -4,9 +4,9 @@ def convert(currency): # Finds out which and how many coins/denominations are ne
     found = False
     try:
         if currency["Abbrevi"] != "JPY":
-            amount = int(round(float(input("How much money are you putting in?:\n")),2) * 100)
+            amount = int(round(float(input("How much money are you putting in?:\n").strip()),2) * 100)
         else:
-            amount = int(round(float(input("How much money are you putting in?:\n"))) * 100)
+            amount = int(round(float(input("How much money are you putting in?:\n").strip())) * 100)
     except:
         print("Invalid Input: Try Again (Insert a Number)")
         return
