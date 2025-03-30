@@ -12,6 +12,7 @@ Not used for this class
 ---
 Paragraph describing how to use the project
 To use this program you will have to run the main file's code with having the other files connected to it. The program will play in the terminal and starts with a concise description of the program. It then asks which of the four currencies they want to use. You will input the currencies name or abbreviation. If you want to exit, input 0. It will then ask how much money you want to put in and will subsequently print out the solution to the coin change problem. It will repeat by asking the desired currency again. The program will not accept inputs that are not the correct ones, but will instead give an error message and let you reinsert your input.
+
 ![image](image.png)  
 
 ## Used Technologies
@@ -22,7 +23,7 @@ No imported libraries are used
 ---
 + This program uses just one csv file that handles all of the information for multiple currencies
 + This program lets you solve the coin change problem easily
-+ This program prints the needed denominations in a neat, efficent way
++ This program prints the needed denominations in a neat, efficent way  
 
 
 ## Contributions
