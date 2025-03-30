@@ -10,7 +10,7 @@ Not used for this class
 
 ## Execution and Usage
 ---
-To use this program you have to install the correct libraries and the run the code. Menus will have you insert numbers that correspond with an action such as Create(1) Remove(2) or Exit(3). The first thing you need to do for the program is create characters and then either fight with them to level up or earn money. Then, you should do other things with your characters like shopping or checking their information. Then you can keep on doing these things as many times as you would like and you could even let other poeple make characters so then you can fight not just your own characters.
+To use this program you have to install the correct libraries and then run the code. Menus will have you insert numbers that correspond with an action such as Create(1) Remove(2) or Exit(3). The first thing you need to do for the program is create characters and then either fight with them to level up or earn money. Then, you should do other things with your characters like shopping or checking their information. Then you can keep on doing these things as many times as you would like and you could even let other poeple make characters so then you can fight not just your own characters.
 
 ![image](image.png)  
 

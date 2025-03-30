@@ -1,2 +1,5 @@
-Currency,Coins
-USD,"[Penny-1,Nickel-5,Dime-10,Quarter-25,Half Dollar-50,Dollar Coin?-100]"
+Currency,Abbrevi,Denomin
+US Dollar,USD,"['Hundred Dollar-10000','Fifty Dollar-5000','Twenty Dollar-2000','Ten Dollar-1000','Five Dollar-500','Two Dollar-200','Dollar-100','Half Dollar-50','Quarter-25','Dime-10','Nickel-5','Penny-1']"
+Euro,EUR,"['Five Hundred Euro Note-50000','Two Hundred Euro Note-20000','Hundred Eurs(Not)-10000','Fifty Euro Note-5000','Twenty Euro Note-2000','Ten Euro Note-1000','Five Euro Note-500','Two Euro Coin-200','One Euro Coin-100','Fifty Cent Coin-50','Twenty Cent Coin-20','Ten Cent Coin-10','Five Cent Coin-5','Two Cent Coin-2','One Cent Coin-1']"
+British Pound Sterling,GBP,"['Fifty Pound Note-5000','Twenty Pound Note-2000','Ten Pound Note-1000','Five Pound Note-500','Two Pound Coin-200','One Pound Coin-100','Fifty Pence Coin-50','Twenty Pence Coin-20','Ten Pence Coin-10','Five Pence Coin-5','Two Pence Coin-2','One Pence Coin-1']"
+Japanese Yen,JPY,"['Ten Thousand Yen Note-1000000','Five Thousand Yen Note-500000','Two Thousand Yen Note-200000','Thousand Yen Note-100000','Five Hundred Yen Coin-50000','Hundred Yen Coin-10000','Fifty Yen Coin-5000','Ten Yen Coin-1000','Five Yen Coin-500','One Yen Coin-100']"
