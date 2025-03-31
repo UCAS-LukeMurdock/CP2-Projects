@@ -1,7 +1,7 @@
 # Luke Murdock, Read & Write to Files, Integer Input Handler, and other Handlers
 import csv
 
-def read_file(): # Turns a file into a list of dictionary characters
+def read_file(): # Turns a file into a list of dictionaries
     dicts = []
     with open("", "r") as file:
         reader = csv.reader(file)

@@ -31,5 +31,4 @@ def menu(): # Introduces the program and then lets the user choose one of the op
             break
         else:
             print("Something Broke")
-            continue
 menu()
