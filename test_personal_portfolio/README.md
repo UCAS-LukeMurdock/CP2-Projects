@@ -1,4 +1,4 @@
-# Name of the project
+# Scrapped Personal Portfolio
 
 ## Project Description
 ---

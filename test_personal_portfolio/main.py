@@ -1,4 +1,4 @@
-# Luke Murdock, Personal Portfolio
+# Luke Murdock, Scrapped Personal Portfolio
 
 """
 OVERVIEW:
