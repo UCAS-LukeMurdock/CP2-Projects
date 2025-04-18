@@ -48,8 +48,8 @@ def menu(): # Introduces the program and then lets the user choose one of the op
         elif choice == "5":
             ()
         elif choice == "6":
-            print("Come Back Soon!")
+            print("\n\n\nCome Back Soon!\n\n\n")
             break
         else:
-            print("Invalid Input (Insert an Accepted Number)")
+            print("\nInvalid Input (Insert an Accepted Number)")
 menu()

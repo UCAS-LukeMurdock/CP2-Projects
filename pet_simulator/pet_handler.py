@@ -9,7 +9,10 @@ def ask_new_pet(): #
     age = random.randint(0,20)
     eye_color = random.choice(["red","orange","yellow","green","blue","purple",])
     create_pet(name, species, color, eye_color, age)
-    print(f"\nYou run into the wilderness and find a {color} {species.lower()} with {eye_color} eyes that looks {age} year{'s' if age != 1 else ''} old. You put a collar on it that says {name}.")
+    return f"\nYou run into the wilderness and find a {color} {species.lower()} with {eye_color} eyes that looks {age} year{'s' if age != 1 else ''} old. You put a collar on it that says {name}."
+
+def breed_pets():
+
 
 def create_pet(name, species, color, eye_color, age): # 
     pets = read_file()

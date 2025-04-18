@@ -38,30 +38,64 @@ Data Management:
     Implement a scoring and reward system for competitions (4 points)
     Design a leaderboard and pet ranking system (5 points)
 """
+
+from file_handler import read_file, write_file
 from pet_handler import ask_new_pet
 
 def menu(): # Introduces the program and then lets the user choose one of the options
-    print("\n\nWelcome to this Pet Simulator, where you can get new pets, , , or .")
     while True:
-        choice = input("\n(1) (2) (3) (4) (5) Exit(6)\n")
-        if choice == "1":
-            ask_new_pet()
-        elif choice == "2":
+        choice = input("\n (2) (3) (4) (5) Exit(6)\nChoice:").strip()
+        if choice == '1':
             ()
-        elif choice == "3":
+        elif choice == '2':
             ()
-        elif choice == "4":
+        elif choice == '3':
             ()
-        elif choice == "5":
+        elif choice == '4':
             ()
-        elif choice == "6":
-            print("Come Back Soon!")
+        elif choice == '5':
+            ()
+        elif choice == '6':
+            ()
+        elif choice == '7':
             break
         else:
-            print("Invalid Input (Insert an Accepted Number)")
-menu()
+            print("\nInvalid Input (Insert a Corresponding Number)")
 
-"""
-Create project
+def pick_pet(): # 
+    pets = read_file()
+    for pet in pets:
+        pet.active = False
+    while True:
+        choice = input("\nGet a pet(1) Interact with a pet(2) Quit(3)\nChoice: ").strip()
+        if choice == '1':
+            print(ask_new_pet())
+        elif choice == '2':
 
-"""
+            def pick_interact_pet():
+                nonlocal pets
+                found = False
+                name = input('\nName of the pet: ').strip()
+                for ind, user in enumerate(pets):
+                    if name == user['Name']:
+                        pets[ind].active = True
+                        write_file(pets)
+                        print('\nYou have picked a pet!')
+                        found = True
+                        menu()
+                        pets = read_file()
+                if found == False:
+                    print(f'\nThe pet {name} could not be found')
+                    continue
+
+            pick_interact_pet()
+
+        elif choice == '3':
+            print("\n\n\nThank you for using this Pet Simulator!\nCome Back Soon!\n\n\n")
+            exit()
+        else:
+            print('\nInvalid Input (Insert a Corresponding Number)')
+            
+            
+print("\n\n\nWelcome to this Pet Simulator, where you can get pets, , , or .")
+pick_pet()
