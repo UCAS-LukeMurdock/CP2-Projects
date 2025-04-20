@@ -11,20 +11,21 @@ Not used for this class
 ## Execution and Usage
 ---
 Paragraph describing how to use the project
+
 ![image](relative path to the image NOTE: Image has to be saved in the repository REMINDER: Show what the project looks like when running)  
 
 ## Used Technologies
 ---
-+ First library in the repository
-`pip install code for the library`
-+ Second library in the repository
-`pip install code for the library`
-+ Third library in the repository
-`pip install code for the library`  
++ Faker
+`pip install Faker`
++ Matplotlib
+`pip install matplotlib`
++ Numpy
+`pip install numpy`  
 
 ## Current Features
 ---
-+ First feature I am proud of
++ This program lets your pets get items from buying them or finding them
 + Second feature I am proud of
 + Third feature I am proud of  
 
