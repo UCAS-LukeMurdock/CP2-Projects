@@ -1,7 +1,8 @@
 name,species,color,eye color,age,time,level,money,inventory,health,happy,energy,active
-Soxx,cat,orange,green,15,34,0,0,['Collar'],55,83,55,False
+Soxx,cat,orange,green,17,0,1,0,['Collar'],94,81,34,False
 Trey,Dog,Brown,purple,0,5,0,0,['Collar'],63,51,60,False
-Sapnap,Dog,orange,green,0,0,0,0,['Collar'],50,50,50,False
 George,Fish,orange,yellow,20,0,0,0,['Collar'],50,50,50,False
-Dream,Cat,green and white,blue,12,0,1,23,"['Collar', 'Stick', 'Bone', 'Stick']",168,55,59,True
-Newborn,Cat,orange,yellow,0,0,0,0,['Collar'],50,50,50,False
+Dream,Cat,green and white,blue,15,0,11,9,"['Collar', 'Stick', 'Bone', 'Stick', 'Apple tree', 'Starfruit', 'Stick', 'Bone', 'Stick', 'Pet videogame console']",559,347,159,True
+Sapnap,Cat,orange,yellow,0,0,0,0,['Collar'],50,50,50,False
+Badboyhalo,Fish,orange,blue,0,0,0,0,['Collar'],50,50,50,False
+Toothless,Dragon,Iridescent,blue,5,2,0,0,"['Collar', 'Stick']",50,52,50,False

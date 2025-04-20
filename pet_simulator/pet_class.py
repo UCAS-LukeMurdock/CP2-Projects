@@ -1,5 +1,6 @@
 # Luke Murdock, Pet Class
 import random
+import math
 from faker import Faker
 import matplotlib.pyplot as plt
 import numpy as np
@@ -64,7 +65,7 @@ class Pet: # A class that creates pet objects with many attributes and methods
                 ax.bar_label(p, label_type='center')
             ax.set_title(f"{self.name}'s Status")
             ax.legend()
-            print(f"The visualization is a pop-up with a bar graph of {self.name}'s status. (Exit the pop-up to continue)")
+            print(f"\nThe visualization is a pop-up with a bar graph of {self.name}'s status. (Exit the pop-up to continue)")
             plt.show()
 
         elif choice != "0" and choice != "":
@@ -83,121 +84,110 @@ class Pet: # A class that creates pet objects with many attributes and methods
         return f"\nYou pet {self.name}"
 
     def feed(self): # Lets the user feed their pet food that they find or have bought which each have different attribute modifications
-        choice = input(f"\nWhich food would you like to feed {self.name}?:\nBerry(1) Chips(2) Broccoli(3) Candy(4) Apple(5) Starfruit(6)  Exit(0)\nChoice: ")
+        choice = input(f"\nWhich food would you like to feed {self.name}?:\nBerry(1) Chips(2) Broccoli(3) Candy(4) Apple(5) Starfruit(6)  Exit(0)\nChoice: ").strip()
         if choice == "0":
             return "\nYou didn't feed your pet"
         elif choice == "1":
+            food = " berry"
             print(f"\n{self.name} found a berry in a bush!")
             self.change_stats(1,3,4)
         elif choice == "2":
+            food = " chip"
             print(f"\n{self.name} found a chip somewhere!")
             self.change_stats(7,10,-10)
         elif choice == "3":
+            food = " broccoli"
             if "Broccoli garden" not in self.inventory:
                 return f"\n{self.name} doesn't own a broccoli garden"
             self.change_stats(-5,10,15)
         elif choice == "4":
+            food = " piece of candy"
             if "Candy bag" not in self.inventory:
                 return f"\n{self.name} doesn't own a candy bag"
             self.change_stats(15,35,-20)
         elif choice == "5":
+            food = "n apple"
             if "Apple tree" not in self.inventory:
                 return f"\n{self.name} doesn't own an apple tree"
             self.change_stats(7,12,17)
         elif choice == "5":
+            food = " starfruit"
             if "Starfruit" not in self.inventory:
                 return f"\n{self.name} doesn't own a starfruit"
             self.change_stats(30,30,30)
             self.inventory.remove("Starfruit")
         else:
             return "\nInvalid Input (Insert a Corresponding Number)"
-        return f"\nYou fed {self.name}"
+        return f"\nYou fed {self.name} a{food}"
         
     def play(self): # Lets the user play or do activites with their pet, leveling up and buying new items unlocks these actions
-        choice = input(f"\nWhat would you like to do with {self.name}?:\nGo on a long run(1) Hide-and-seek(2) Treasure hunt(3) Play on a pet videogame console(4) Play with a toy(5)  Exit(0)\nChoice: ")
+        choice = input(f"\nWhat would you like to do with {self.name}?:\nGo on a long run(1) Hide-and-seek(2) Treasure hunt(3) Play on a pet videogame console(4) Play with a toy(5)  Exit(0)\nChoice: ").strip()
+        limit = 0
+        item = "none"
+        once = False
         if choice == "0":
             return "\nYou didn't end up playing with your pet"
         elif choice == "1":
-            self.change_stats(-5,-15,15)
-            return f"\nYou went on a long, tiring run with {self.name}"
+            text, change, item = f"\nYou went on a long, tiring run with {self.name}", [-5,-15,15], 'none'
         elif choice == "2":
-            if self.level < 5:
-                return f"\n{self.name} doesn't know the skills for level 5"
-            self.change_stats(5,-5,10)
-            return f"\nYou played a fun game of hide-and-seek with {self.name}"
+            limit = 5
+            text, change, item = f"\nYou played a fun game of hide-and-seek with {self.name}", [5,-5,10], 'none'
         elif choice == "3":
-            if self.level < 5:
-                return f"\n{self.name} doesn't know the skills for level 10"
-            self.change_stats(15,0,15)
-            return f"\nYou go on a really fun and energetic treasure hunt with {self.name}"
+            limit = 10
+            text, change, item = f"\nYou go on a really fun and energetic treasure hunt with {self.name}", [15,0,15], 'none'
         elif choice == "4":
-            if "\nPet videogame console" not in self.inventory:
-                return f"{self.name} doesn't own a pet videogame console"
-            self.change_stats(45,5,-10)
-            return f"\nYou played pet videogames with {self.name} using the console"
+            text, change, item = f"\nYou played pet videogames with {self.name} using the console", [45,5,-10], 'Pet videogame console'
         elif choice == "5":
 
             def toy_play(): # Lets the user play with their pet using an a certain item/toy which changes the stats/attributes that get changed
-                toy_choice = input(f"\nWhich toy would you like to play with {self.name}?:\nCollar(1) Bone(2) Stick(3) Ball(4) Yarn(5) Football(6) Wishbone(7) Rope(8) Chew toy(9) Laserpen(10)  Exit(0)\nChoice: ")
+                toy_choice = input(f"\nWhich toy would you like to play with {self.name}?:\nCollar(1) Bone(2) Stick(3) Ball(4) Yarn(5) Football(6) Wishbone(7) Rope(8) Chew toy(9) Laserpen(10)  Exit(0)\nChoice: ").strip()
                 if choice == "0":
-                    return "\nYou didn't end up using a toy to play with your pet"
+                    return "\nYou didn't end up using a toy to play with your pet", [0,0,0], "none", "no"
                 elif choice == "1":
-                    self.change_stats(5,-1,5)
-                    return random.choices([f"\nYou played fetch with {self.name} using the collar",f"\n{self.name} dug and hid the collar and you had to find it and dig it up",f"\nYou rode on {self.name} by holdling on to the collar that's on them"],weights = [10,10,1])
+                    toy, change, text = "Collar",[5,-1,5], random.choices([f"\nYou played fetch with {self.name} using the collar",f"\n{self.name} dug and hid the collar and you had to find it and dig it up",f"\nYou rode on {self.name} by holdling on to the collar that's on them"],weights = [10,10,1])
                 elif choice == "2":
-                    if "\nBone" not in self.inventory:
-                        return f"{self.name} doesn't have a bone"
-                    self.change_stats(10,-5,5)
-                    return random.choice([f"\nYou played fetch with {self.name} using the bone",f"\n{self.name} dug and hid the bone and you had to find it and dig it up"])
+                    once = True
+                    text, toy, change = random.choice([f"\nYou played fetch with {self.name} using the bone and ended up losing it",f"\n{self.name} dug and hid the bone and you couldn't find it"]),"Bone",[10,-5,5]
                 elif choice == "3":
-                    if "\nStick" not in self.inventory:
-                        return f"{self.name} doesn't have a stick"
-                    self.change_stats(-2,0,10)
-                    return f"\nYou played fetch with {self.name} using the stick"
+                    once = True
+                    text, toy, change = f"\nYou played fetch with {self.name} using the stick and it got lost in the foilage","Stick",[-2,0,10]
                 elif choice == "4":
-                    if "\nBall" not in self.inventory:
-                        return f"{self.name} doesn't have a ball"
-                    self.change_stats(5,-7,15)
-                    return f"\nYou played fetch with {self.name} using the ball"
+                    once = True
+                    text, toy, change = f"\nYou played fetch with {self.name} using the ball and it bounced away","Ball",[5,-7,15]
                 elif choice == "5":
-                    if "\nYarn" not in self.inventory:
-                        return f"{self.name} doesn't have yarn"
-                    self.change_stats(7,-2,5)
-                    return f"\nYou let {self.name} play with yarn for a while"
+                    once = True
+                    text, toy, change = f"\nYou let {self.name} play with yarn for a while and it eventually got torn to shreds","Yarn",[7,-2,5]
                 elif choice == "6":
-                    if "\nFootball" not in self.inventory:
-                        return f"{self.name} doesn't own a football"
-                    self.change_stats(10,-5,15)
-                    return f"\nYou played fetch with {self.name} using the football"
+                    text, toy, change = f"\nYou played fetch with {self.name} using the football","Football",[10,-5,15]
                 elif choice == "7":
-                    if "\nWishbone" not in self.inventory:
-                        return f"{self.name} doesn't own a wishbone"
-                    self.change_stats(7,0,12)
-                    return f"\nYou let {self.name} chew on the wishbone"
+                    text, toy, change = f"\nYou let {self.name} chew on the wishbone","Wishbone",[7,0,12]
                 elif choice == "8":
-                    if "\nRope" not in self.inventory:
-                        return f"{self.name} doesn't own a rope"
-                    self.change_stats(2,7,10)
-                    return f"\nYou let {self.name} chew on the rope"
+                    text, toy, change = f"\nYou let {self.name} chew on the rope","Rope",[2,7,10]
                 elif choice == "9":
-                    if "\nChew toy" not in self.inventory:
-                        return f"{self.name} doesn't own a chew toy"
-                    self.change_stats(15,2,2)
-                    return f"\nYou let {self.name} chew on the chew toy and it makes some squeaky sounds"
+                    text, toy, change = f"\nYou let {self.name} chew on the chew toy and it makes some squeaky sounds","Chew toy",[15,2,2]
                 elif choice == "10":
-                    if "\nLaserpen" not in self.inventory:
-                        return f"{self.name} doesn't own a laserpen"
-                    self.change_stats(15,1,17)
-                    return f"\nYou moved and dodged a point of light made from the laserpen that {self.name} tried to catch"
+                    text, toy, change = f"\nYou moved and dodged a point of light made from the laserpen that {self.name} tried to catch","Laserpen",[15,1,17]
                 else:
-                    return "\nInvalid Input (Insert a Corresponding Number)"
+                    return "\nInvalid Input (Insert a Corresponding Number)", [0,0,0], "none", "no"
+                return text, change, toy, once
 
-            return toy_play()
+            text, change, item, once = toy_play()
         else:
             return "\nInvalid Input (Insert a Corresponding Number)"
+        
+        if item != 'none':
+            if item not in self.inventory:
+                return f"{self.name} doesn't own a {item.lower()}"
+            if once == True:
+                 self.inventory.remove(item)
+        elif limit != 0:
+            if self.level < limit:
+                return f"\n{self.name} doesn't know the skills for level {limit}"
+        self.change_stats(change[0],change[1],change[2])
+        return text
 
     def competition(self): # Lets the user choose what to compete in and then sorts their pet and randomly generated pets by best to worst and then gives out prizes depending on what place you get
-        choice = input(f"\nWhat competition would you like to do with {self.name}?:\nRace(1) Happiness Pageant(2) Strength Contest(3) Obstacle Course(4) Videogame Battle(5)  Exit(0)\nChoice: ")
+        choice = input(f"\nWhat competition would you like to do with {self.name}?:\nRace(1) Happiness Pageant(2) Strength Contest(3) Obstacle Course(4) Videogame Battle(5)  Exit(0)\nChoice: ").strip()
         
         def compete(stat,stat_ind,amount): # This is what makes the competitors and sorts them from best to worst
             fake = Faker()
@@ -211,13 +201,14 @@ class Pet: # A class that creates pet objects with many attributes and methods
                 elif amount == 3:
                     comp_stat = round((happy + energy + health)/3)
                 
-                competitor = [comp_stat,happy,energy,health,round((happy + energy + health)/3),random.choice(fake.first_name()),random.choice(["red","orange","yellow","green","blue","purple",]),random.choice("cat","dog","lizard","rabbit","chicken","lizard","hamster","frog")]
+                competitor = [comp_stat,happy,energy,health,round((happy + energy + health)/3),fake.first_name(),random.choice(["red","orange","yellow","green","blue","purple",]),random.choice(["cat","dog","lizard","rabbit","chicken","lizard","hamster","frog"])]
                 competitors.append(competitor)
 
             def sort_competitors(comp): # Allows sort() to sort by the competitors by their first index which is what the contest is testing against
                 return comp[0]
 
             competitors.sort(reverse=True, key=sort_competitors)
+            print()
             for ind, competitor in enumerate(competitors):
                 if competitor[5] == self.name:
                     place = ind +1
@@ -230,125 +221,75 @@ class Pet: # A class that creates pet objects with many attributes and methods
             elif place == 3:
                 money = 1
             return place, money
+        
+        
+        places = ["0th", "1st", "2nd", "3rd", "4th", "5th"]
 
         if choice == "0":
             return "\nYou didn't end up competing with your pet"
         elif choice == "1":
-            if self.level < 5:
-                return f"\n{self.name} doesn't know the skills for level 1"
-            outcome, prize = compete(self.energy,1,1)
-            prize *= 1
-            self.money += prize
-            self.change_stats(0,-5,5)
-            return f"\n{self.name} competed and got {outcome} place in the Race and earned ${prize}"
+            type, limit, comp_info, change = "Race", 1, [self.energy,1,1], [1,-5,5]
         elif choice == "2":
-            if self.level < 5:
-                return f"\n{self.name} doesn't know the skills for level 5"
-            outcome, prize = compete(self.happy,0,1)
-            prize *= 2
-            self.money += prize
-            self.change_stats(5,-7,10)
-            return f"\n{self.name} competed and got {outcome} place in the Happiness Pageant and earned ${prize}"
+            type, limit, comp_info, change = "Happiness Pageant", 5, [self.happy,0,1], [2,-7,10]
         elif choice == "3":
-            if self.level < 5:
-                return f"\n{self.name} doesn't know the skills for level 10"
-            outcome, prize = compete(self.health,2,1)
-            prize *= 3
-            self.money += prize
-            self.change_stats(10,-12,15)
-            return f"\n{self.name} competed and got {outcome} place in the Strength Contest and earned ${prize}"
+            type, limit, comp_info, change = "Strength Contest", 10, [self.health,2,1], [3,-12,15]
         elif choice == "4":
-            if self.level < 5:
-                return f"\n{self.name} doesn't know the skills for level 15"
-            outcome, prize = compete(self.energy + self.health,3,2)
-            prize *= 4
-            self.money += prize
-            self.change_stats(15,-17,20)
-            return f"\n{self.name} competed and got {outcome} place in the Obstacle Course and earned ${prize}"
+            type, limit, comp_info, change = "Obstacle Course", 15, [self.energy+self.health,3,2], [4,-17,20]
         elif choice == "5":
-            if self.level < 5:
-                return f"\n{self.name} doesn't know the skills for level 20"
-            if "\nPet videogame console" not in self.inventory:
+            type, limit, comp_info, change = "Videogame Battle", 20, [self.calc_well(),3,3], [5,-15,25]
+            if self.level < limit:
+                return f"\n{self.name} doesn't know the skills for level {limit}"
+            if "Pet videogame console" not in self.inventory:
                 return f"{self.name} doesn't own a pet videogame console"
-            outcome, prize = compete(self.calc_well(),3,3)
-            prize *= 5
-            self.money += prize
-            self.change_stats(20,-15,25)
-            return f"\n{self.name} competed and got {outcome} place in the Videogame Battle and earned ${prize}"
         else:
             return "\nInvalid Input (Insert a Corresponding Number)"
         
+        if self.level < limit:
+            return f"\n{self.name} doesn't know the skills for level {limit}"
+        outcome, prize = compete(comp_info[0],comp_info[1],comp_info[2])
+        prize *= int(choice)
+        self.money += prize
+        self.change_stats(change[0]+prize, change[1], change[0])
+        return f"\n{self.name} competed and got {places[outcome]} place in the {type} and earned ${prize}"
+        
     def shop(self): # Lets the user buy items that they have not previously bought if they have enough money
-        choice = input(f"\nWhat would you like buy for {self.name}?:\n\nChew toy $5 (1)\nRope $10 (2)\nWishbone $10 (3)\nFootball $15 (4)\nLaserpen $25 (5)\nPet videogame conssole $50 (6)\n\nBroccoli garden $10 (7)\nCandy bag $15 (8)\nApple tree $20 (9)\nStarfruit $50 (10)\n\nExit(0)\nChoice: ")
+        choice = input(f"\nWhat would you like buy for {self.name}?:\n{self.name}'s Money: ${self.money}\n\n(1) $5 - Chew toy\n(2) $10 - Rope\n(3) $10 - Wishbone\n(4) $15 - Football\n(5) $25 - Laserpen\n(6) $50 - Pet videogame console\n\n(7) $10 - Broccoli garden \n(8) $15 - Candy bag \n(9) $20 - Apple tree \n(10) $30 - Starfruit \n\nExit(0)\nChoice: ").strip()
         if choice == "0":
             return "\nYou didn't end up competing with your pet"
         elif choice == "1":
-            if "\nChew toy" in self.inventory:
-                return f"{self.name} already owns a chew toy"
             bought, spent = "Chew toy", 5
-            self.inventory.append(bought)
-            self.money -= spent
         elif choice == "2":
-            if "\nRope" in self.inventory:
-                return f"{self.name} already owns a rope"
-            bought, spent = "Rope", 5
-            self.inventory.append(bought)
-            self.money -= spent
+            bought, spent = "Rope", 10
         elif choice == "3":
-            if "\nWishbone" in self.inventory:
-                return f"{self.name} already owns a wishbone"
-            bought, spent = "Wishbone", 5
-            self.inventory.append(bought)
-            self.money -= spent
+            bought, spent = "Wishbone", 10
         elif choice == "4":
-            if "\nFootball" in self.inventory:
-                return f"{self.name} already owns a football"
-            bought, spent = "Football", 5
-            self.inventory.append(bought)
-            self.money -= spent
+            bought, spent = "Football", 15
         elif choice == "5":
-            if "\nLaserpen" in self.inventory:
-                return f"{self.name} already owns a Laserpen"
-            bought, spent = "Laserpen", 5
-            self.inventory.append(bought)
-            self.money -= spent
+            bought, spent = "Laserpen", 25
         elif choice == "6":
-            if "\nPet videogame console" in self.inventory:
-                return f"{self.name} already owns a pet videogame console"
-            bought, spent = "Pet videogame console", 5
-            self.inventory.append(bought)
-            self.money -= spent
+            bought, spent = "Pet videogame console", 50
         elif choice == "7":
-            if "\nBroccoli garden" in self.inventory:
-                return f"{self.name} already owns a broccoli garden"
-            bought, spent = "Broccoli garden", 5
-            self.inventory.append(bought)
-            self.money -= spent
+            bought, spent = "Broccoli garden", 10
         elif choice == "8":
-            if "\nCandy bag" in self.inventory:
-                return f"{self.name} already owns a candy bag"
-            bought, spent = "Candy bag", 5
-            self.inventory.append(bought)
-            self.money -= spent
+            bought, spent = "Candy bag", 15
         elif choice == "9":
-            if "\nApple tree" in self.inventory:
-                return f"{self.name} already owns a apple tree"
-            bought, spent = "Apple tree", 5
-            self.inventory.append(bought)
-            self.money -= spent
+            bought, spent = "Apple tree", 20
         elif choice == "10":
-            if "\nStarfruit" in self.inventory:
-                return f"{self.name} already owns a starfruit"
-            bought, spent = "Starfruit", 5
-            self.inventory.append(bought)
-            self.money -= spent
+            bought, spent = "Starfruit", 30
         else:
             return "\nInvalid Input (Insert a Corresponding Number)"
-        self.happy += 5
-        return f"\nYou successfully bought {bought} for {self.name} at the price of ${spent}"
+        
+        if bought in self.inventory:
+            return f"\n{self.name} already owns a {bought}"
+        elif self.money < spent:
+            return f"\n{self.name} doesn't have enough money to buy the {bought} for ${spent}"
+        self.inventory.append(bought)
+        self.money -= spent
+        self.change_stats(5,0,0)
+        return f"\nYou successfully bought the {bought} for {self.name} at the price of ${spent}"
 
     def sleep(self): # Lets the user choose how long the pet sleeps, changing the stats and then it processes/progresses the pet depending on their stats
-        sleep_time = input(f"\nHow long do you want {self.name} to nap?: Six hours(1) Eight hours(2) Ten hours(3)  Exit(0)\nChoice: ")
+        sleep_time = input(f"\nHow long do you want {self.name} to nap?: Six hours(1) Eight hours(2) Ten hours(3)  Exit(0)\nChoice: ").strip()
         if sleep_time == "0":
             return "\nYou didn't let your pet sleep"
         elif sleep_time == "1":
@@ -360,10 +301,12 @@ class Pet: # A class that creates pet objects with many attributes and methods
             print(f"\nYou let {self.name} sleep\n\n\nZZZzzz\n\n\n{self.name} woke up")
 
         def processing(): # Checks to see if the pet has done enough actions and if it is happy enough and then grows it and levels it up accordingly
+            growth, level = 0, self.level
             if self.time >= 20:
                 growth = round(self.time/20)
                 self.time = 0
                 self.age += growth
+
                 if self.calc_well() >= 100:
                     self.level += 5
                 elif self.calc_well() >= 85:
@@ -372,14 +315,19 @@ class Pet: # A class that creates pet objects with many attributes and methods
                     self.level += 2
                 elif self.calc_well() >= 50:
                     self.level += 1
-            return f"\n{self.name} has grown {growth} years and is now {self.age} years old. {self.name} is {'now also' if self.calc_well() >= 75 else 'still'} level {self.level}."
+
+            return f"\n{self.name} has grown {growth} years and is {self.age} years old. {self.name} is {f'now also level {self.level} instead of level {level}' if growth > 0 and self.calc_well() >= 50 else f'still level {self.level}'}."
 
         return processing()
     
 
     def sick(self): # Makes the pet sick which brings its stats done and takes up time
         time_sick = random.randint(1,4)
-        self.change_stats(-20,-25,-15, time_sick)
+        sickness = -math.ceil(self.calc_well() /3)
+        if self.calc_well() > 100:
+            self.change_stats(round(sickness*1.5),sickness,sickness*2, time_sick)
+        else:
+            self.change_stats(sickness-5,sickness,sickness-10, time_sick)
         return f"\n{self.name} got sick for enough time that you could have done {time_sick} activites with them!"
     
     def find_toy(self): # Lets the pet find a toy that they can use in play-time
@@ -393,6 +341,11 @@ class Pet: # A class that creates pet objects with many attributes and methods
         return f"\n{self.name} found ${money}!"
     
     def stat_burst(self): # Lets the pet randomly increase one of their stats
-        stat = random.choice([[random.randint(1,7),0,0],[0,random.randint(1,7),0],[0,0,random.randint(1,7)]])
-        self.change_stats(stat[0],stat[1],stat[2], time = 0)
-        return f"\n{self.name} feels bursted with {'happiness' if stat[0] != 0 else 'energy' if stat[1] != 0 else 'healthiness'}!"
+        if random.choice(["bad","good"]) == "good":
+            stat = random.choice([[random.randint(1,7),0,0],[0,random.randint(1,7),0],[0,0,random.randint(1,7)]])
+            self.change_stats(stat[0],stat[1],stat[2], time = 0)
+            return f"\n{self.name} bursted with {'happiness' if stat[0] != 0 else 'energy' if stat[1] != 0 else 'healthiness'}!"
+        else:
+            stat = random.choice([[random.randint(-7,-1),0,0],[0,random.randint(-7,-1),0],[0,0,random.randint(-7,-1)]])
+            self.change_stats(stat[0],stat[1],stat[2], time = 0)
+            return f"\n{self.name} bursted with {'sadness' if stat[0] != 0 else 'tiredness' if stat[1] != 0 else 'unhealthiness'}!"

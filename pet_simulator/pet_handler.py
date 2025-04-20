@@ -15,7 +15,9 @@ def create_pet(name, species, color, eye_color, age): # Takes parameters and sta
     write_file(pets)
 
 def ask_new_pet(): # Asks the user for details of their new pet that they will get and then creates it
-    species = input("What species do you want this pet to be?: ").strip()
+    species = input("What species do you want this pet to be? [Exit(0)]: ").strip()
+    if species == "0":
+        return "\nYou didn't get a new pet"
     color = input("What color do you want this pet to be?: ").strip()
     name = input("What do you want to name this pet?: ").strip().title()
     if species == '' or color == '' or name == '':
@@ -29,7 +31,7 @@ def breed(): # If two pets are old enough then they can breed with each other to
     pets = read_file()
     pet = active_pet(pets)
     if pets[pet].age < 10:
-        return f"{pets[pet].name} is too young to breed. (Breeding age limit is 10 years old)"
+        return f"\n{pets[pet].name} is too young to breed. (Minimum breeding age is 10 years old)"
     print(f"\nWhat other pet do you want to breed with {pets[pet].name}?: ")
     name = display_pets(pets)
     if name.lower() == pets[pet].name.lower():
@@ -37,9 +39,10 @@ def breed(): # If two pets are old enough then they can breed with each other to
     for ind, search_pet in enumerate(pets):
         if name.lower() == search_pet.name.lower():
             if search_pet.age < 10:
-                return f"{search_pet.name} is too young to breed. (Breeding age limit is 10 years old)"
+                return f"\n{search_pet.name} is too young to breed. (Minimum breeding age is 10 years old)"
             other_pet = ind
             break
+        return f'\nThe pet "{name}" could not be found'
 
     species = random.choice([pets[pet].species, pets[other_pet].species])
     color = random.choice([pets[pet].color, pets[other_pet].color])

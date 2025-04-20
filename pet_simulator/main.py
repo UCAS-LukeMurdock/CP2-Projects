@@ -48,13 +48,13 @@ def menu(): # Lets the user choose one of the options and then might randomly pi
     pet = active_pet(pets)
 
     while True:
-        choice = input(f"\nWhat do you want to do with your pet named {pets[pet].name}?\nView status(1) Pet(2) Feed(3) Play(4) Compete(5) Shop(6) Sleep(7) Breed(8) Exit(0)\nChoice: ").strip()
+        choice = input(f"\nWhat do you want to do with your pet named {pets[pet].name}?\nView status(1) Pet(2) Feed(3) Play(4) Compete(5) Shop(6) Sleep(7) Breed(8)  Exit(0)\nChoice: ").strip()
         if choice == '0':
             pets[pet].active = False
             write_file(pets)
             break
         elif choice == '1':
-            print(pets[pet].status())
+            pets[pet].status()
         elif choice == '2':
             print(pets[pet].pet())
         elif choice == '3':
@@ -95,7 +95,7 @@ def pick_pet(): # Lets a user get new pets and pick which one they want to inter
         pets[ind].active = False
     write_file(pets)
     while True:
-        choice = input("\nGet a pet(1) Interact with a pet(2) Quit(3)\nChoice: ").strip()
+        choice = input("\nGet a pet(1) Interact with a pet(2)  Quit(3)\nChoice: ").strip()
         if choice == '1':
             print(ask_new_pet())
         elif choice == '2':
