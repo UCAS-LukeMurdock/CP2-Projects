@@ -1,7 +1,7 @@
-name,species,color,eye color,age,level,money,inventory,health,hunger,happy,energy,active
-Soxx,cat,orange,green,15,30,15,[],50,100,90,40,False
-Soxx,cat,blue,red,15,30,15,[],50,100,90,40,False
-George,Dog,brown,purple,10,0,0,['Collar'],100,100,100,100,False
-sapnap,Cat,red,green,2000,0,0,['Collar'],100,100,100,100,False
-Escargo,Snail,brown,yellow,1000,0,0,['Collar'],100,100,100,100,False
-rock,Cat,green,yellow,6,0,0,['Collar'],100,100,100,100,False
+name,species,color,eye color,age,time,level,money,inventory,health,happy,energy,active
+Soxx,cat,orange,green,15,34,0,0,['Collar'],55,83,55,False
+Trey,Dog,Brown,purple,0,5,0,0,['Collar'],63,51,60,False
+Sapnap,Dog,orange,green,0,0,0,0,['Collar'],50,50,50,False
+George,Fish,orange,yellow,20,0,0,0,['Collar'],50,50,50,False
+Dream,Cat,green and white,blue,12,0,1,23,"['Collar', 'Stick', 'Bone', 'Stick']",168,55,59,True
+Newborn,Cat,orange,yellow,0,0,0,0,['Collar'],50,50,50,False

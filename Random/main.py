@@ -2,10 +2,13 @@
 
 # import matplotlib.pyplot as plt
 # import numpy as np
-import datetime as dt
-print(dt.datetime.now())
+# import datetime as dt
+# from faker import Faker
 
+# fake = Faker()
+# print(fake.first_name())
 
+# print(dt.datetime.now())
 
 # def y(x):
 #     return x+x
