@@ -1,4 +1,4 @@
-# Luke Murdock, Read & Write to Files, Pet Class, and other Handlers
+# Luke Murdock, Read & Write to Files and Finding the active pet
 import csv
 from pet_class import Pet
 

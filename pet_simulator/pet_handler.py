@@ -15,7 +15,7 @@ def create_pet(name, species, color, eye_color, age): # Takes parameters and sta
     write_file(pets)
 
 def ask_new_pet(): # Asks the user for details of their new pet that they will get and then creates it
-    species = input("What species do you want this pet to be? [Exit(0)]: ").strip()
+    species = input("\nWhat species do you want this pet to be? [Exit(0)]: ").strip()
     if species == "0":
         return "\nYou didn't get a new pet"
     color = input("What color do you want this pet to be?: ").strip()
@@ -32,6 +32,7 @@ def breed(): # If two pets are old enough then they can breed with each other to
     pet = active_pet(pets)
     if pets[pet].age < 10:
         return f"\n{pets[pet].name} is too young to breed. (Minimum breeding age is 10 years old)"
+    
     print(f"\nWhat other pet do you want to breed with {pets[pet].name}?: ")
     name = display_pets(pets)
     if name.lower() == pets[pet].name.lower():

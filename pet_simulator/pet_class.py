@@ -6,7 +6,9 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 class Pet: # A class that creates pet objects with many attributes and methods
-    def __init__(self,name,species,color,eye_color,age,time,level,money,inventory,health,happy,energy,active): # Sets starting attributes during the creation of an object
+
+    # Sets starting attributes during the creation of an object
+    def __init__(self,name,species,color,eye_color,age,time,level,money,inventory,health,happy,energy,active):
         self.name = name
         self.species = species
         self.color = color
@@ -51,7 +53,9 @@ class Pet: # A class that creates pet objects with many attributes and methods
         for item in self.inventory:
             items += f" {item},"
 
-        choice = input(f"\nName: {self.name}\nDescription: {self.name} is a {self.color} {self.species} with {self.eye_color} eyes that is {self.age} years old {well_state}.\n\nTime spent with {self.name} while being {self.age} years old: {self.time}\nLevel: {self.level}\nMoney: ${self.money}\nInventory:{items[:-1]}\n\nHappiness: {self.happy}\nEnergy: {self.energy}\nHealth: {self.health}\nWellness: {self.calc_well()}\n\nType '0' to exit, '1' for a visualization, and the pet's new name, if you want to rename {self.name}.\nChoice: ").strip().title()
+        choice = input(f"\nName: {self.name}\nDescription: {self.name} is a {self.color} {self.species} with {self.eye_color} eyes that is {self.age} years old {well_state}.\n\nTime spent with {self.name} while being {self.age} years old: {self.time}\nLevel: {self.level}\nMoney: ${self.money}\nInventory:{items[:-1]}\n\nHappiness: {self.happy}\nEnergy: {self.energy}\nHealth: {self.health}\nWellness: {self.calc_well()}\n\nStatus Visual(1) Rename(2)  Exit(0)\nChoice: ").strip()
+        if choice == "0":
+            return
         
         if choice == "1": # This makes the visual bar graph
             stats = ('Happy', 'Energy', 'Health', 'Wellness')
@@ -68,9 +72,13 @@ class Pet: # A class that creates pet objects with many attributes and methods
             print(f"\nThe visualization is a pop-up with a bar graph of {self.name}'s status. (Exit the pop-up to continue)")
             plt.show()
 
-        elif choice != "0" and choice != "":
-            print(f"\n{self.name}'s name was changed to {choice}!")
-            self.name = choice
+        elif choice == "2":
+            rename = input(f"\nWhat do you want to rename {self.name} to?: ").strip().title()
+            if rename == '':
+                print("\nInvalid Input (The input were empty)")
+                return
+            print(f"\n{self.name}'s name was changed to {rename}!")
+            self.name = rename
 
     def change_stats(self, happy, energy, health, time=1): # Changes the pet's attributes depending on the parameters
         self.happy += happy
@@ -110,7 +118,7 @@ class Pet: # A class that creates pet objects with many attributes and methods
             if "Apple tree" not in self.inventory:
                 return f"\n{self.name} doesn't own an apple tree"
             self.change_stats(7,12,17)
-        elif choice == "5":
+        elif choice == "6":
             food = " starfruit"
             if "Starfruit" not in self.inventory:
                 return f"\n{self.name} doesn't own a starfruit"
@@ -128,47 +136,48 @@ class Pet: # A class that creates pet objects with many attributes and methods
         if choice == "0":
             return "\nYou didn't end up playing with your pet"
         elif choice == "1":
-            text, change, item = f"\nYou went on a long, tiring run with {self.name}", [-5,-15,15], 'none'
+            text, change = f"\nYou went on a long, tiring run with {self.name}", [-5,-15,15]
         elif choice == "2":
             limit = 5
-            text, change, item = f"\nYou played a fun game of hide-and-seek with {self.name}", [5,-5,10], 'none'
+            text, change = f"\nYou played a fun game of hide-and-seek with {self.name}", [5,-5,10]
         elif choice == "3":
             limit = 10
-            text, change, item = f"\nYou go on a really fun and energetic treasure hunt with {self.name}", [15,0,15], 'none'
+            text, change = f"\nYou go on a really fun and energetic treasure hunt with {self.name}", [15,0,15]
         elif choice == "4":
             text, change, item = f"\nYou played pet videogames with {self.name} using the console", [45,5,-10], 'Pet videogame console'
         elif choice == "5":
 
             def toy_play(): # Lets the user play with their pet using an a certain item/toy which changes the stats/attributes that get changed
-                toy_choice = input(f"\nWhich toy would you like to play with {self.name}?:\nCollar(1) Bone(2) Stick(3) Ball(4) Yarn(5) Football(6) Wishbone(7) Rope(8) Chew toy(9) Laserpen(10)  Exit(0)\nChoice: ").strip()
-                if choice == "0":
-                    return "\nYou didn't end up using a toy to play with your pet", [0,0,0], "none", "no"
-                elif choice == "1":
-                    toy, change, text = "Collar",[5,-1,5], random.choices([f"\nYou played fetch with {self.name} using the collar",f"\n{self.name} dug and hid the collar and you had to find it and dig it up",f"\nYou rode on {self.name} by holdling on to the collar that's on them"],weights = [10,10,1])
-                elif choice == "2":
+                once = False
+                toy_choice = input(f"\nWhich toy would you like to use while playing with {self.name}?:\nCollar(1) Bone(2) Stick(3) Ball(4) Yarn(5) Football(6) Wishbone(7) Rope(8) Chew toy(9) Laserpen(10)  Exit(0)\nChoice: ").strip()
+                if toy_choice == "0":
+                    return "\nYou didn't end up using a toy to play with your pet", [0,0,0], "none", False
+                elif toy_choice == "1":
+                    toy, change, text = "Collar",[5,-1,5], random.choices([f"\nYou played fetch with {self.name} using the collar",f"\n{self.name} dug and hid the collar and you had to find it and dig it up",f"\nYou rode on {self.name} by holdling on to the collar that's on them"],weights = [10,10,1])[0]
+                elif toy_choice == "2":
                     once = True
                     text, toy, change = random.choice([f"\nYou played fetch with {self.name} using the bone and ended up losing it",f"\n{self.name} dug and hid the bone and you couldn't find it"]),"Bone",[10,-5,5]
-                elif choice == "3":
+                elif toy_choice == "3":
                     once = True
                     text, toy, change = f"\nYou played fetch with {self.name} using the stick and it got lost in the foilage","Stick",[-2,0,10]
-                elif choice == "4":
+                elif toy_choice == "4":
                     once = True
                     text, toy, change = f"\nYou played fetch with {self.name} using the ball and it bounced away","Ball",[5,-7,15]
-                elif choice == "5":
+                elif toy_choice == "5":
                     once = True
                     text, toy, change = f"\nYou let {self.name} play with yarn for a while and it eventually got torn to shreds","Yarn",[7,-2,5]
-                elif choice == "6":
+                elif toy_choice == "6":
                     text, toy, change = f"\nYou played fetch with {self.name} using the football","Football",[10,-5,15]
-                elif choice == "7":
+                elif toy_choice == "7":
                     text, toy, change = f"\nYou let {self.name} chew on the wishbone","Wishbone",[7,0,12]
-                elif choice == "8":
+                elif toy_choice == "8":
                     text, toy, change = f"\nYou let {self.name} chew on the rope","Rope",[2,7,10]
-                elif choice == "9":
+                elif toy_choice == "9":
                     text, toy, change = f"\nYou let {self.name} chew on the chew toy and it makes some squeaky sounds","Chew toy",[15,2,2]
-                elif choice == "10":
+                elif toy_choice == "10":
                     text, toy, change = f"\nYou moved and dodged a point of light made from the laserpen that {self.name} tried to catch","Laserpen",[15,1,17]
                 else:
-                    return "\nInvalid Input (Insert a Corresponding Number)", [0,0,0], "none", "no"
+                    return "\nInvalid Input (Insert a Corresponding Number)", [0,0,0], "none", False
                 return text, change, toy, once
 
             text, change, item, once = toy_play()
@@ -177,12 +186,15 @@ class Pet: # A class that creates pet objects with many attributes and methods
         
         if item != 'none':
             if item not in self.inventory:
-                return f"{self.name} doesn't own a {item.lower()}"
+                return f"\n{self.name} doesn't own a {item.lower()}"
             if once == True:
                  self.inventory.remove(item)
         elif limit != 0:
             if self.level < limit:
+                f"\n{self.name} doesn't know the skills needed for that activity which are attained at level {limit}"
                 return f"\n{self.name} doesn't know the skills for level {limit}"
+        if change == [0,0,0]:
+            return text
         self.change_stats(change[0],change[1],change[2])
         return text
 
@@ -222,9 +234,7 @@ class Pet: # A class that creates pet objects with many attributes and methods
                 money = 1
             return place, money
         
-        
         places = ["0th", "1st", "2nd", "3rd", "4th", "5th"]
-
         if choice == "0":
             return "\nYou didn't end up competing with your pet"
         elif choice == "1":
@@ -245,7 +255,7 @@ class Pet: # A class that creates pet objects with many attributes and methods
             return "\nInvalid Input (Insert a Corresponding Number)"
         
         if self.level < limit:
-            return f"\n{self.name} doesn't know the skills for level {limit}"
+            return f"\n{self.name} doesn't know the skills needed for the {type} that are attained at level {limit}"
         outcome, prize = compete(comp_info[0],comp_info[1],comp_info[2])
         prize *= int(choice)
         self.money += prize
@@ -289,19 +299,32 @@ class Pet: # A class that creates pet objects with many attributes and methods
         return f"\nYou successfully bought the {bought} for {self.name} at the price of ${spent}"
 
     def sleep(self): # Lets the user choose how long the pet sleeps, changing the stats and then it processes/progresses the pet depending on their stats
-        sleep_time = input(f"\nHow long do you want {self.name} to nap?: Six hours(1) Eight hours(2) Ten hours(3)  Exit(0)\nChoice: ").strip()
+        sleep_time = input(f"\nHow long do you want {self.name} to sleep?: Six hours(1) Eight hours(2) Ten hours(3)  Exit(0)\nChoice: ").strip()
+    
         if sleep_time == "0":
             return "\nYou didn't let your pet sleep"
         elif sleep_time == "1":
-            self.change_stats(0,7,2, 1)
+            self.change_stats(-5,25,-5, time=1)
         elif sleep_time == "2":
-            self.change_stats(0,6,5, 2)
-        elif sleep_time == "1":
-            self.change_stats(0,4,5, 3)
-            print(f"\nYou let {self.name} sleep\n\n\nZZZzzz\n\n\n{self.name} woke up")
+            self.change_stats(0,17,5, time=2)
+        elif sleep_time == "3":
+            self.change_stats(0,20,3, time=3)
+        else:
+            return "\nInvalid Input (Insert a Corresponding Number)"
+        
+        print(f"\nYou let {self.name} sleep\n\n\nZZZzzz\n\n\n{self.name} woke up")
+        if self.energy < 0:
+            self.energy = 10
+            self.change_stats(0,0,-45, time=7)
+            print(f"{self.name} slept for a very long time and no longer feels deprived of energy, though he feels a lot weaker")
+        elif self.energy < 50:
+            self.change_stats(0,20,-25, tiem=5)
+            print(f"{self.name} slept for longer than you wanted but feels more energized, even though he feels weaker")
 
         def processing(): # Checks to see if the pet has done enough actions and if it is happy enough and then grows it and levels it up accordingly
             growth, level = 0, self.level
+            text = f'{self.name} is still level {level} (Increase their Wellness to potentially level them up)'
+
             if self.time >= 20:
                 growth = round(self.time/20)
                 self.time = 0
@@ -316,7 +339,21 @@ class Pet: # A class that creates pet objects with many attributes and methods
                 elif self.calc_well() >= 50:
                     self.level += 1
 
-            return f"\n{self.name} has grown {growth} years and is {self.age} years old. {self.name} is {f'now also level {self.level} instead of level {level}' if growth > 0 and self.calc_well() >= 50 else f'still level {self.level}'}."
+                if self.level > level:
+                    text = f"{self.name} has leveled up from level {level} to level {self.level}!"
+
+                if self.level >= 1 and level < 1:
+                    text += f"\n({self.name} now knows the skills to be able to participate in the Race competition)"
+                if self.level >= 5 and level < 5:
+                    text += f"\n({self.name} now knows the skills to be able to play hide-and-seek and participate in the Happiness Pageant competition)"
+                if self.level >= 10 and level < 10:
+                    text += f"\n({self.name} now knows the skills to be able to go on a treasure hunt and participate in the Strength Contest competition)"
+                if self.level >= 15 and level < 15:
+                    text += f"\n({self.name} now knows the skills to be able to participate in the Obstacle Course competition)"
+                if self.level >= 20 and level < 20:
+                    text += f"\n({self.name} now knows the skills to be able to participate in the Videogame Battle competition)"
+
+            return f"\n{self.name} grew {growth} years overnight and is {'still' if growth == 0 else 'now'} {self.age} years old.\n{text}"
 
         return processing()
     
