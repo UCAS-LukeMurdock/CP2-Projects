@@ -96,12 +96,10 @@ class Pet: # A class that creates pet objects with many attributes and methods
         if choice == "0":
             return "\nYou didn't feed your pet"
         elif choice == "1":
-            food = " berry"
-            print(f"\n{self.name} found a berry in a bush!")
+            food = f" berry that {self.name} found in a bush!"
             self.change_stats(1,3,4)
         elif choice == "2":
-            food = " chip"
-            print(f"\n{self.name} found a chip somewhere!")
+            food = f" chip that {self.name} found somewhere!"
             self.change_stats(7,10,-10)
         elif choice == "3":
             food = " broccoli"
@@ -317,8 +315,8 @@ class Pet: # A class that creates pet objects with many attributes and methods
             self.energy = 10
             self.change_stats(0,0,-45, time=7)
             print(f"{self.name} slept for a very long time and no longer feels deprived of energy, though he feels a lot weaker")
-        elif self.energy < 50:
-            self.change_stats(0,20,-25, tiem=5)
+        elif self.energy < 40:
+            self.change_stats(0,20,-25, time=5)
             print(f"{self.name} slept for longer than you wanted but feels more energized, even though he feels weaker")
 
         def processing(): # Checks to see if the pet has done enough actions and if it is happy enough and then grows it and levels it up accordingly
