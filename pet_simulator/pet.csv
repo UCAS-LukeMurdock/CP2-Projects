@@ -2,6 +2,4 @@ name,species,color,eye color,age,time,level,money,inventory,health,happy,energy,
 George,Fish,orange,yellow,20,0,0,0,['Collar'],50,50,50,False
 Dream,Cat,green and white,blue,15,0,11,9,"['Collar', 'Stick', 'Bone', 'Stick', 'Apple tree', 'Starfruit', 'Stick', 'Bone', 'Stick', 'Pet videogame console']",559,347,159,False
 Toothless,Dragon,Iridescent,blue,5,2,0,0,"['Collar', 'Stick']",50,52,50,False
-Pooper,poopy,greeny,red,8,40,0,25,"['Collar', 'Bone', 'Bone', 'Ball', 'Yarn', 'Yarn', 'Bone', 'Yarn']",439,-85,-336,False
 Pinky Pie,unicorn,pink,purple,20,5,9,2,"['Collar', 'Stick', 'Bone', 'Bone', 'Stick', 'Bone', 'Bone']",269,97,-6,False
-Final,thing,red,orange,4,0,4,5,"['Collar', 'Bone']",65,89,101,False
