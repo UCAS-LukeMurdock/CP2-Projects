@@ -5,6 +5,22 @@
 # import datetime as dt
 # from faker import Faker
 
+# import matplotlib.pyplot as plt
+
+# def accuracy_visual(correct, questions):
+    
+#     correct_perc = round((int(correct) / int(questions)) * 100)
+#     data = [100-correct_perc, correct_perc] # Add up to 100
+#     labels = ['Incorrect', 'Correct']
+#     colors = ['tab:red', 'tab:green']
+#     explode = (0.1, 0)  # Explode the 1st slice (Dogs)
+
+#     plt.pie(data, labels=labels, colors=colors, explode=explode, shadow=True, autopct='%1.1f%%')
+#     plt.title('Accuracy')
+#     plt.show()
+
+# accuracy_visual(3,5)
+
 # fake = Faker()
 # print(fake.first_name())
 
