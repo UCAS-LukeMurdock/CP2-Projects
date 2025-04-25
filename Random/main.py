@@ -5,6 +5,18 @@
 # import datetime as dt
 # from faker import Faker
 
+# def social():
+#     accs = [["Luke",5],["Rock", 7],["Cat",0]]
+#     print("\nStreak Leaderboard")
+#     streaks = []
+#     for acc in accs:
+#         streaks.append([acc[1], acc[0]])
+#     ranked_streaks = sorted(streaks, key=lambda acc: int(acc[0]), reverse=True)
+#     for rank, streak in enumerate(ranked_streaks[:10]):
+#         print(f"{rank+1}. {streak[1]} - {streak[0]} days")
+
+# social()
+
 # import matplotlib.pyplot as plt
 
 # def accuracy_visual(correct, questions):
