@@ -16,7 +16,7 @@ def display(message):
     screen.blit(background_image, (0,0))
     screen.blit(final_surface, (50, 50))
     pygame.display.flip()  # Update the display
-    pygame.time.delay(3000)  # Wait for 5 seconds before quitting
+    pygame.time.delay(3000)  # Wait for 3 seconds before quitting
 
 
 def inputting(message):
@@ -68,8 +68,8 @@ def inputting(message):
 # user = inputting()
 # display(user)
 
-display("Welcome, to this program!")
-inputting("Username: ")
+# display("Welcome, to this program!")
+# inputting("Username: ")
 
 def inputting(message):
     pygame.init()
@@ -115,4 +115,4 @@ def inputting(message):
     return text
 
 display("Welcome, to this program!")
-inputting("Username: ")
+# inputting("Username: ")
